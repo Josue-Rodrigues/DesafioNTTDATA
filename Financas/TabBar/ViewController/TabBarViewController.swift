@@ -20,8 +20,20 @@ class TabBarViewController: UITabBarController {
 
         mainVC.title = "Lançamentos"
         categoryVC.title = "Categoria"
+        
+        categoryVC.tabBarItem.image = UIImage(systemName: "Lançamentos")
+        categoryVC.tabBarItem.image = UIImage(systemName: "Categorias")
 
         self.setViewControllers([mainVC, categoryVC], animated: false)
+        
+//        guard let items = self.tabBar.items else { return }
+//
+//        let images = ["Lançamentos", "Categorias"]
+//
+//        for x in 0...1 {
+//
+//            items[x].image = UIImage(systemName: images[x])
+//        }
         
         self.tabBar.tintColor = .black
     }

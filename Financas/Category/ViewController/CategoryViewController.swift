@@ -14,7 +14,11 @@ class CategoryViewController: UIViewController {
     var categoryDetail:[CategoryDetail] = [
         CategoryDetail(title: "Automovel", description: "Funilaria e Pintura"),
         CategoryDetail(title: "Casa", description: "Fechamento da sacada"),
-        CategoryDetail(title: "Mercado", description: "Compra do mês")
+        CategoryDetail(title: "Mercado", description: "Compra do mês"),
+        CategoryDetail(title: "Contas Fixas", description: "Salario de Janeiro"),
+        CategoryDetail(title: "Contas Fixas", description: "Água"),
+        CategoryDetail(title: "Contas Fixas", description: "Luz"),
+        CategoryDetail(title: "Contas Fixas", description: "Internet")
     ]
 
     override func loadView() {
@@ -26,16 +30,23 @@ class CategoryViewController: UIViewController {
         super.viewDidLoad()
         // Assinando os protocolos de delegate e datasource criados em nossa CONTACTVIEWSCREEN
         self.categoryViewScreen?.settingTableViewProtocols(delegate: self, dataSource: self)
+        // Chamando as função de assinatura da NavigationController
         self.setNavigationBar()
     }
     
+    // Função para setUp das caracterista da navigationController
     func setNavigationBar(){
         // Setando o title de minha NavigationBar
         self.title = "Categorias"
         // Deixando o titulo do Navigation em LargeTitle (Aumentando a fonte)
         navigationController?.navigationBar.prefersLargeTitles = true
         // Adicionando um BarButton com seleção de imagem personalizada
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Adicionar"), style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Adicionar"), style: .plain, target: self, action: #selector(tappedAddCategoryButton))
+    }
+    
+    // Função de seleção do Botão de adicionar
+    @objc private func tappedAddCategoryButton() {
+        print("Adicionar itens de Categoria")
     }
 }
 
@@ -52,12 +63,10 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell:CategoryTableViewCell? = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier, for: indexPath) as? CategoryTableViewCell
         cell?.setUpCell(data: self.categoryDetail[indexPath.row])
-        
         return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
     }
     
     // Função para determinar o tamanho da TableView

@@ -13,9 +13,10 @@ class MainViewController: UIViewController {
     
     var releaseDetail:[ReleasesDetail] = [
         ReleasesDetail(imageName: "VectorCima", title: "Salário", categories: " Contas Fixas ", value: "R$ 3.000,00", date: "29 Dez"),
-        ReleasesDetail(imageName: "VectorBaixo", title: "Luz", categories: " Contas Fixas ", value: "R$ 100,00", date: "29 Dez"),
-        ReleasesDetail(imageName: "VectorBaixo", title: "Aguá", categories: " Contas Fixas ", value: "R$ 250,00", date: "29 Dez"),
-        ReleasesDetail(imageName: "VectorBaixo", title: "Internet", categories: " Contas Fixas ", value: "R$ 80,00", date: "29 Dez")
+        ReleasesDetail(imageName: "VectorBaixo", title: "Luz", categories: " Contas Fixas ", value: "R$ 100,00", date: "19 Dez"),
+        ReleasesDetail(imageName: "VectorBaixo", title: "Aguá", categories: " Contas Fixas ", value: "R$ 250,00", date: "12 Dez"),
+        ReleasesDetail(imageName: "VectorBaixo", title: "Internet", categories: " Contas Fixas ", value: "R$ 80,00", date: "10 Dez"),
+        ReleasesDetail(imageName: "VectorBaixo", title: "Aluguel", categories: " Contas Fixas ", value: "R$ 900,00", date: "09 Dez")
     ]
 
     override func loadView() {
@@ -27,16 +28,23 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         // Assinando os protocolos de delegate e datasource criados em nossa CONTACTVIEWSCREEN
         self.mainViewScreen?.settingTableViewProtocols(delegate: self, dataSource: self)
+        // Chamando as função de assinatura da NavigationController
         self.setNavigationBar()
     }
     
+    // Função para setUp das caracterista da navigationController
     func setNavigationBar(){
         // Setando o title de minha NavigationBar
-        self.title = "Lançamentos"
+        self.title = "Meus gastos"
         // Deixando o titulo do Navigation em LargeTitle (Aumentando a fonte)
         navigationController?.navigationBar.prefersLargeTitles = true
         // Adicionando um BarButton com seleção de imagem personalizada
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Adicionar"), style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Adicionar"), style: .plain, target: self, action: #selector(tappedAddReleaseButton))
+    }
+    
+    // Função de seleção do Botão de adicionar
+    @objc private func tappedAddReleaseButton() {
+        print("Adicionar itens de Lançamento")
     }
 }
 
@@ -79,28 +87,37 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        
     }
     
-//    //  Funcao para deletar itens da tabela
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//
-//        if editingStyle == UITableViewCell.EditingStyle.delete {
-//            print("Deletado")
+    // Criando e editando função de arraste da TableViewCell - Direita para esquerda - DELETE
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            print("Arraste Deletar")
+        }
+    }
+    
+//    // Criando e editando função de arraste da TableViewCell - Direita para esquerda - DELETE
+//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+//            print("Arraste Deletar")
 //        }
+//        return [delete]
 //    }
     
-    // Criando editação, titulo e cor para as função de arraste da TableViewCell
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            print("Deletar")
+    // Criando e editando função de arraste da TableViewCell - esquerda para direita - EDIT
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let add = UIContextualAction (style: . normal , title: "Editar" ) { (action, view, complete ) in
+            print("Arraste Editar")
+            self.isEditing = false
         }
-
-        let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
-            print("Editar")
-        }
-        edit.backgroundColor = UIColor(displayP3Red: 94/255, green: 163/255, blue: 163/255, alpha: 1.0)
-        return [delete, edit]
+        // Editando a cor de fundo do arraste EDITAR
+        add.backgroundColor = UIColor(displayP3Red: 94/255, green: 163/255, blue: 163/255, alpha: 1.0)
+        
+        let config = UISwipeActionsConfiguration (actions:[add])
+        return config
     }
 
     // Função para determinar o tamanho da TableView
