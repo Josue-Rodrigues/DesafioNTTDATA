@@ -23,6 +23,7 @@
 		A85FF9DB27EA33030038E638 /* CategoryViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85FF9DA27EA33030038E638 /* CategoryViewScreen.swift */; };
 		A85FF9DD27EA33180038E638 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85FF9DC27EA33180038E638 /* CategoryTableViewCell.swift */; };
 		A85FF9DF27EA33430038E638 /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85FF9DE27EA33430038E638 /* CategoryDetail.swift */; };
+		A85FF9E127EBA4E50038E638 /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85FF9E027EBA4E50038E638 /* SegmentedControlView.swift */; };
 		EB82DAACF028A6CEADD160D5 /* Pods_Financas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9309FBC8F4A3CEF59B756609 /* Pods_Financas.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		A85FF9DA27EA33030038E638 /* CategoryViewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewScreen.swift; sourceTree = "<group>"; };
 		A85FF9DC27EA33180038E638 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		A85FF9DE27EA33430038E638 /* CategoryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetail.swift; sourceTree = "<group>"; };
+		A85FF9E027EBA4E50038E638 /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
 		BC1028D187FA2CDDA0AFD433 /* Pods-Financas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Financas.debug.xcconfig"; path = "Target Support Files/Pods-Financas/Pods-Financas.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +148,7 @@
 			children = (
 				A80D750827E90770006600B7 /* EntryDetailView.swift */,
 				A80D750A27E907AA006600B7 /* OutputDetailView.swift */,
+				A85FF9E027EBA4E50038E638 /* SegmentedControlView.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				A80D750E27E908D1006600B7 /* ReleasesTableViewCell.swift in Sources */,
 				A80D750B27E907AA006600B7 /* OutputDetailView.swift in Sources */,
 				A80D751127E913B6006600B7 /* ReleasesDetail.swift in Sources */,
+				A85FF9E127EBA4E50038E638 /* SegmentedControlView.swift in Sources */,
 				A80D753427EA2AAD006600B7 /* TabBarViewController.swift in Sources */,
 				A85FF9DF27EA33430038E638 /* CategoryDetail.swift in Sources */,
 				A85FF9D527EA2FF60038E638 /* CategoryViewController.swift in Sources */,
@@ -508,7 +512,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -536,7 +540,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

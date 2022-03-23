@@ -11,6 +11,7 @@ class TabBarViewController: UITabBarController {
 
     var mainViewController: MainViewController?
     var categoryViewController: CategoryViewController?
+    var navigationBar: UINavigationController = UINavigationController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,11 +19,11 @@ class TabBarViewController: UITabBarController {
         let mainVC = MainViewController()
         let categoryVC = CategoryViewController()
 
-        mainVC.title = "Lançamentos"
-        categoryVC.title = "Categoria"
-        
-        categoryVC.tabBarItem.image = UIImage(systemName: "Lançamentos")
-        categoryVC.tabBarItem.image = UIImage(systemName: "Categorias")
+//        mainVC.title = "Lançamentos"
+//        categoryVC.title = "Categoria"
+//
+//        categoryVC.tabBarItem.image = UIImage(systemName: "Lançamentos")
+//        categoryVC.tabBarItem.image = UIImage(systemName: "Categorias")
 
         self.setViewControllers([mainVC, categoryVC], animated: false)
         
@@ -36,5 +37,7 @@ class TabBarViewController: UITabBarController {
 //        }
         
         self.tabBar.tintColor = .black
+        
+        self.mainViewController?.setNavigationBar()
     }
 }

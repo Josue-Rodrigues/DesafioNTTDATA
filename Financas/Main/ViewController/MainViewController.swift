@@ -10,6 +10,7 @@ import UIKit
 class MainViewController: UIViewController {
     
     var mainViewScreen: MainViewScreen? = MainViewScreen()
+    var segmentedControlView: SegmentedControlView? = SegmentedControlView()
     
     var releaseDetail:[ReleasesDetail] = [
         ReleasesDetail(imageName: "VectorCima", title: "Salário", categories: " Contas Fixas ", value: "R$ 3.000,00", date: "29 Dez"),
@@ -28,6 +29,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         // Assinando os protocolos de delegate e datasource criados em nossa CONTACTVIEWSCREEN
         self.mainViewScreen?.settingTableViewProtocols(delegate: self, dataSource: self)
+        self.segmentedControlView?.delegate(delegate: self)
         // Chamando as função de assinatura da NavigationController
         self.setNavigationBar()
     }
@@ -130,3 +132,23 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
 }
+
+extension MainViewController: SegmentedControlProtocol {
+    
+   // func actionSegmentedControl(senderx: NSInteger){
+    func actionSegmentedControl(sender: UISegmentedControl){
+        
+        switch sender.selectedSegmentIndex {
+            
+        case 0:
+            print("Essa semana")
+        case 1:
+            print("Essa mês")
+        case 2:
+            print("Todo conteudo")
+        default:
+            print("SegmentedControl")
+        }
+    }
+}
+

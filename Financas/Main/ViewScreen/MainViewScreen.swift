@@ -8,6 +8,15 @@
 import UIKit
 
 class MainViewScreen: UIView {
+    
+    lazy var segmentedControl: SegmentedControlView = {
+        
+        let segmentedControl = SegmentedControlView()
+        segmentedControl.clipsToBounds = true
+        segmentedControl.layer.cornerRadius = 8
+        
+        return segmentedControl
+    }()
 
     lazy var entryDetailView: EntryDetailView = {
         
@@ -41,6 +50,7 @@ class MainViewScreen: UIView {
         
         self.settingsSuperView()
         self.settingsBackGround()
+        self.settingSegmentedControlConstraint()
         self.settingEntryDetailViewConstraint()
         self.settingOutputDetailViewConstraint()
         self.settingReleasesTableViewCellConstraint()
@@ -57,6 +67,7 @@ class MainViewScreen: UIView {
     }
     
     func settingsSuperView() {
+        self.addSubview(self.segmentedControl)
         self.addSubview(self.entryDetailView)
         self.addSubview(self.outputDetailView)
         self.addSubview(self.releasesTableViewCell)
@@ -67,6 +78,15 @@ class MainViewScreen: UIView {
     }
     
     // Metodo de criação e configuração das Constraints (Framework - SNAPKIT)
+    func settingSegmentedControlConstraint() {
+        self.segmentedControl.snp.makeConstraints { make in
+            make.bottom.equalTo(self.entryDetailView.snp.top).offset(-14.5)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+            make.height.equalTo(32)
+        }
+    }
+    
     func settingEntryDetailViewConstraint() {
         self.entryDetailView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(205)
