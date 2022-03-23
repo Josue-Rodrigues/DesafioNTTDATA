@@ -20,13 +20,22 @@ class CategoryViewController: UIViewController {
     override func loadView() {
         // Indicando que nossa View terá o mesmo formato, medidas e detalhes de nossa ContactViewScreen
         self.view = categoryViewScreen
-        self.title = "Categorias"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Assinando os protocolos de delegate e datasource criados em nossa CONTACTVIEWSCREEN
         self.categoryViewScreen?.settingTableViewProtocols(delegate: self, dataSource: self)
+        self.setNavigationBar()
+    }
+    
+    func setNavigationBar(){
+        // Setando o title de minha NavigationBar
+        self.title = "Categorias"
+        // Deixando o titulo do Navigation em LargeTitle (Aumentando a fonte)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        // Adicionando um BarButton com seleção de imagem personalizada
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Adicionar"), style: .plain, target: self, action: nil)
     }
 }
 

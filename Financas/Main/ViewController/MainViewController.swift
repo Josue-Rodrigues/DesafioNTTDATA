@@ -21,13 +21,22 @@ class MainViewController: UIViewController {
     override func loadView() {
         // Indicando que nossa View terá o mesmo formato, medidas e detalhes de nossa ContactViewScreen
         self.view = mainViewScreen
-        self.title = "Meus Gastos"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Assinando os protocolos de delegate e datasource criados em nossa CONTACTVIEWSCREEN
         self.mainViewScreen?.settingTableViewProtocols(delegate: self, dataSource: self)
+        self.setNavigationBar()
+    }
+    
+    func setNavigationBar(){
+        // Setando o title de minha NavigationBar
+        self.title = "Lançamentos"
+        // Deixando o titulo do Navigation em LargeTitle (Aumentando a fonte)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        // Adicionando um BarButton com seleção de imagem personalizada
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "Adicionar"), style: .plain, target: self, action: nil)
     }
 }
 
@@ -71,6 +80,27 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+    }
+    
+//    //  Funcao para deletar itens da tabela
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//
+//        if editingStyle == UITableViewCell.EditingStyle.delete {
+//            print("Deletado")
+//        }
+//    }
+    
+    // Criando editação, titulo e cor para as função de arraste da TableViewCell
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            print("Deletar")
+        }
+
+        let edit = UITableViewRowAction(style: .normal, title: "Edit") { (action, indexPath) in
+            print("Editar")
+        }
+        edit.backgroundColor = UIColor(displayP3Red: 94/255, green: 163/255, blue: 163/255, alpha: 1.0)
+        return [delete, edit]
     }
 
     // Função para determinar o tamanho da TableView

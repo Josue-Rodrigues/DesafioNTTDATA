@@ -18,11 +18,11 @@ class TabBarViewController: UITabBarController {
         let mainVC = MainViewController()
         let categoryVC = CategoryViewController()
 
-        mainVC.title = "Home"
+        mainVC.title = "Lançamentos"
+        categoryVC.title = "Categoria"
 
         self.setViewControllers([mainVC, categoryVC], animated: false)
-
+        
         self.tabBar.tintColor = .black
-
     }
 }

@@ -30,7 +30,6 @@ class CategoryTableViewCell: UITableViewCell {
         return label
     }()
     
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -47,7 +46,6 @@ class CategoryTableViewCell: UITableViewCell {
     func settingsSuperView() {
         self.addSubview(self.labelTitle)
         self.addSubview(self.labelDescription)
-
     }
     
     private func settingsBackGround() {
@@ -58,20 +56,17 @@ class CategoryTableViewCell: UITableViewCell {
     public func setUpCell(data:CategoryDetail) {
         self.labelTitle.text = data.title
         self.labelDescription.text = data.description
-
     }
     
     func settingLabelTitleConstraint() {
         self.labelTitle.snp.makeConstraints { make in
-            make.bottom.equalTo(self.safeAreaLayoutGuide.snp.centerY).inset(2)
-            make.leading.equalTo(self.safeAreaLayoutGuide.snp.trailing).offset(15)
+            make.top.left.equalToSuperview().offset(15)
         }
     }
     
     func settingLabelDescriptionConstraint() {
         self.labelDescription.snp.makeConstraints { make in
-            make.top.equalTo(self.safeAreaLayoutGuide.snp.centerY).offset(2)
-            make.leading.equalTo(self.safeAreaLayoutGuide.snp.trailing).offset(15)
+            make.bottom.left.equalToSuperview().inset(15)
         }
     }
 }
