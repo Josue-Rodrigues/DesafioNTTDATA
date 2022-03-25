@@ -13,7 +13,7 @@ protocol SegmentedControlProtocol: AnyObject { // O protocol tipo Class foi subs
 
 class SegmentedControlView: UIView {
     
-    private weak var delegate: SegmentedControlProtocol?
+    private var delegate: SegmentedControlProtocol?
     
     func delegate(delegate: SegmentedControlProtocol?){
         self.delegate = delegate

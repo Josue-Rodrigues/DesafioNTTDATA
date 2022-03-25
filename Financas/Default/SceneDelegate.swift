@@ -10,20 +10,19 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var coordinator: MainTabBarCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        if #available(iOS 15.4, *) {
+        if #available(iOS 15, *) {
             UINavigationBar.appearance() .scrollEdgeAppearance = UINavigationBarAppearance()
         }
         
         let window = UIWindow(windowScene: windowScene)
-        let viewController: MainViewController = MainViewController()
-        let navigationVC = UINavigationController(rootViewController: viewController)
-        window.rootViewController = navigationVC
-        window.makeKeyAndVisible()
-        self.window = window
+        let rootViewController = UINavigationController()
+        coordinator = MainTabBarCoordinator(window: window)
+        coordinator?.start()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -1,15 +1,14 @@
 //
-//  MainViewController.swift
+//  MainListViewController.swift
 //  Financas
 //
-//  Created by Josué Herrera Rodriguês on 21/03/22.
+//  Created by Josué Herrera Rodriguês on 24/03/22.
 //
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainListViewController: UIViewController {
     
-    var mainViewScreen: MainViewScreen? = MainViewScreen()
     var segmentedControlView: SegmentedControlView? = SegmentedControlView()
     
     var releaseDetail:[ReleasesDetail] = [
@@ -19,25 +18,65 @@ class MainViewController: UIViewController {
         ReleasesDetail(imageName: "VectorBaixo", title: "Internet", categories: " Contas Fixas ", value: "R$ 80,00", date: "10 Dez"),
         ReleasesDetail(imageName: "VectorBaixo", title: "Aluguel", categories: " Contas Fixas ", value: "R$ 900,00", date: "09 Dez")
     ]
+    
+    var viewModel: MainListViewModelProtocol
+    
+    lazy var segmentedControl: SegmentedControlView = {
+        
+        let segmentedControl = SegmentedControlView()
+        segmentedControl.clipsToBounds = true
+        segmentedControl.layer.cornerRadius = 8
+        
+        return segmentedControl
+    }()
 
-    override func loadView() {
-        // Indicando que nossa View terá o mesmo formato, medidas e detalhes de nossa ContactViewScreen
-        self.view = mainViewScreen
-    }
+    lazy var entryDetailView: EntryDetailView = {
+        
+        let entryDetailView = EntryDetailView()
+        entryDetailView.clipsToBounds = true
+        entryDetailView.layer.cornerRadius = 8
+        
+        return entryDetailView
+    }()
+    
+    lazy var outputDetailView: OutputDetailView = {
+        
+        let outputDetailView = OutputDetailView()
+        outputDetailView.clipsToBounds = true
+        outputDetailView.layer.cornerRadius = 8
+        
+        return outputDetailView
+    }()
+    
+    lazy var releasesTableViewCell: UITableView = {
+        let releasesTableViewCell = UITableView()
+        releasesTableViewCell.backgroundColor = .white
+        // Adicionando/Registrando nossas celulas dentro de nossa TableView
+        releasesTableViewCell.register(ReleasesTableViewCell.self, forCellReuseIdentifier: ReleasesTableViewCell.identifier)
+        
+        return releasesTableViewCell
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Assinando os protocolos de delegate e datasource criados em nossa CONTACTVIEWSCREEN
-        self.mainViewScreen?.settingTableViewProtocols(delegate: self, dataSource: self)
-        self.segmentedControlView?.delegate(delegate: self)
-        // Chamando as função de assinatura da NavigationController
+        
         self.setNavigationBar()
+        //---------------------------------------------------------------
+        self.settingTableViewProtocols(delegate: self, dataSource: self)
+        self.segmentedControlView?.delegate(delegate: self)
+        //---------------------------------------------------------------
+        self.settingsSuperView()
+        self.settingsBackGround()
+        self.settingSegmentedControlConstraint()
+        self.settingEntryDetailViewConstraint()
+        self.settingOutputDetailViewConstraint()
+        self.settingReleasesTableViewCellConstraint()
     }
     
     // Função para setUp das caracterista da navigationController
     func setNavigationBar(){
         // Setando o title de minha NavigationBar
-        self.title = "Meus gastos"
+        navigationItem.title = "Meus gastos"
         // Deixando o titulo do Navigation em LargeTitle (Aumentando a fonte)
         navigationController?.navigationBar.prefersLargeTitles = true
         // Adicionando um BarButton com seleção de imagem personalizada
@@ -46,12 +85,73 @@ class MainViewController: UIViewController {
     
     // Função de seleção do Botão de adicionar
     @objc private func tappedAddReleaseButton() {
-        print("Adicionar itens de Lançamento")
+        viewModel.tappedAddReleaseButton()
+    }
+    
+    private func settingsBackGround() {
+        self.view.backgroundColor = .white
+    }
+    
+    // Função para configuração do delegate e dataSource em nossa tableView
+    public func settingTableViewProtocols(delegate:UITableViewDelegate, dataSource:UITableViewDataSource) {
+        self.releasesTableViewCell.delegate = delegate
+        self.releasesTableViewCell.dataSource = dataSource
+    }
+    
+    func settingsSuperView() {
+        self.view.addSubview(self.segmentedControl)
+        self.view.addSubview(self.entryDetailView)
+        self.view.addSubview(self.outputDetailView)
+        self.view.addSubview(self.releasesTableViewCell)
+    }
+    
+    init(viewModel:MainListViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // Metodo de criação e configuração das Constraints (Framework - SNAPKIT)
+    func settingSegmentedControlConstraint() {
+        self.segmentedControl.snp.makeConstraints { make in
+            make.bottom.equalTo(self.entryDetailView.snp.top).offset(-14.5)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
+            make.height.equalTo(32)
+        }
+    }
+    
+    func settingEntryDetailViewConstraint() {
+        self.entryDetailView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(205)
+            make.left.equalToSuperview().offset(16)
+            make.right.equalTo(self.view.safeAreaLayoutGuide.snp.centerX).offset(-8)
+            make.height.equalTo(124)
+        }
+    }
+    
+    func settingOutputDetailViewConstraint() {
+        self.outputDetailView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(205)
+            make.right.equalToSuperview().inset(16)
+            make.left.equalTo(self.view.safeAreaLayoutGuide.snp.centerX).offset(8)
+            make.height.equalTo(124)
+        }
+    }
+    
+    func settingReleasesTableViewCellConstraint() {
+        self.releasesTableViewCell.snp.makeConstraints { make in
+            make.top.equalTo(self.entryDetailView.snp.bottom)
+            make.left.right.bottom.equalToSuperview()
+        }
     }
 }
 
 // Colocando no HomeViewController em conformidade com os protocolos de Delegate e DataSource
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+extension MainListViewController: UITableViewDelegate, UITableViewDataSource {
     
     // Função que determina a quantidade de celulas que terá a TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -126,29 +226,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 68
     }
-    
-    // Função para exibição do Navigation Bar
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-    }
 }
 
-extension MainViewController: SegmentedControlProtocol {
-    
-   // func actionSegmentedControl(senderx: NSInteger){
-    func actionSegmentedControl(sender: UISegmentedControl){
-        
-        switch sender.selectedSegmentIndex {
-            
-        case 0:
-            print("Essa semana")
-        case 1:
-            print("Essa mês")
-        case 2:
-            print("Todo conteudo")
-        default:
-            print("SegmentedControl")
-        }
+extension MainListViewController: SegmentedControlProtocol{
+    func actionSegmentedControl(sender: UISegmentedControl) {
+        viewModel.actionSegmentedControl(sender: sender)
     }
 }
-

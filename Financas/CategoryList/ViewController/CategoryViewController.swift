@@ -2,42 +2,49 @@
 //  CategoryViewController.swift
 //  Financas
 //
-//  Created by Josué Herrera Rodriguês on 22/03/22.
+//  Created by Josué Herrera Rodriguês on 24/03/22.
 //
 
 import UIKit
 
 class CategoryViewController: UIViewController {
-
-    var categoryViewScreen: CategoryViewScreen? = CategoryViewScreen()
+    
+    var viewModel: CategoryViewModel
     
     var categoryDetail:[CategoryDetail] = [
         CategoryDetail(title: "Automovel", description: "Funilaria e Pintura"),
         CategoryDetail(title: "Casa", description: "Fechamento da sacada"),
         CategoryDetail(title: "Mercado", description: "Compra do mês"),
         CategoryDetail(title: "Contas Fixas", description: "Salario de Janeiro"),
-        CategoryDetail(title: "Contas Fixas", description: "Água"),
-        CategoryDetail(title: "Contas Fixas", description: "Luz"),
-        CategoryDetail(title: "Contas Fixas", description: "Internet")
+        CategoryDetail(title: "Contas Fixas", description: "Conta de água - Mês de Janeiro"),
+        CategoryDetail(title: "Contas Fixas", description: "Conta de luz - Mês de Janeiro"),
+        CategoryDetail(title: "Contas Fixas", description: "Conta de intenet - Mês de Janeiro")
     ]
-
-    override func loadView() {
-        // Indicando que nossa View terá o mesmo formato, medidas e detalhes de nossa ContactViewScreen
-        self.view = categoryViewScreen
-    }
+    
+    lazy var categoryTableViewCell: UITableView = {
+        let categoryTableViewCell = UITableView()
+        categoryTableViewCell.backgroundColor = .white
+        // Adicionando/Registrando nossas celulas dentro de nossa TableView
+        categoryTableViewCell.register(CategoryTableViewCell.self, forCellReuseIdentifier: CategoryTableViewCell.identifier)
+        
+        return categoryTableViewCell
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Assinando os protocolos de delegate e datasource criados em nossa CONTACTVIEWSCREEN
-        self.categoryViewScreen?.settingTableViewProtocols(delegate: self, dataSource: self)
-        // Chamando as função de assinatura da NavigationController
+        
+        self.settingTableViewProtocols(delegate: self, dataSource: self)
         self.setNavigationBar()
+        
+        self.settingsSuperView()
+        self.settingsBackGround()
+        self.settingCategoryTableViewCellConstraint()
     }
     
     // Função para setUp das caracterista da navigationController
     func setNavigationBar(){
         // Setando o title de minha NavigationBar
-        self.title = "Categorias"
+        navigationItem.title = "Categorias"
         // Deixando o titulo do Navigation em LargeTitle (Aumentando a fonte)
         navigationController?.navigationBar.prefersLargeTitles = true
         // Adicionando um BarButton com seleção de imagem personalizada
@@ -46,7 +53,37 @@ class CategoryViewController: UIViewController {
     
     // Função de seleção do Botão de adicionar
     @objc private func tappedAddCategoryButton() {
-        print("Adicionar itens de Categoria")
+        viewModel.tappedAddCategoryButton()
+    }
+    
+    init(viewModel:CategoryViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    private func settingsBackGround() {
+        self.view.backgroundColor = .white
+    }
+    
+    // Função para configuração do delegate e dataSource em nossa tableView
+    public func settingTableViewProtocols(delegate:UITableViewDelegate, dataSource:UITableViewDataSource) {
+        self.categoryTableViewCell.delegate = delegate
+        self.categoryTableViewCell.dataSource = dataSource
+    }
+    
+    func settingsSuperView() {
+        self.view.addSubview(self.categoryTableViewCell)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // Metodo de criação e configuração das Constraints (Framework - SNAPKIT)
+    func settingCategoryTableViewCellConstraint() {
+        self.categoryTableViewCell.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 }
 
@@ -73,9 +110,5 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 66
     }
-    
-    // Função para exibição do Navigation Bar
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-    }
 }
+
