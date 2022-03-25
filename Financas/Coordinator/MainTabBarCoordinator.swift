@@ -16,6 +16,7 @@ class MainTabBarCoordinator: Coordinator {
     
     private var mainListCoordinator: MainListCoordinator?
     private var categoryCoordinator: CategoryCoordinator?
+//    private var addReleaseCoordinator: AddReleaseCoordinator?
     
     init(window: UIWindow) {
         self.window = window
@@ -28,6 +29,7 @@ class MainTabBarCoordinator: Coordinator {
         
         guard let mainListViewController = creatMainListCoordinatorVC() else {return}
         guard let categoryViewController = creatCategoryCoordinatorVC() else {return}
+//        guard let testeViewController = creatTesteCoordinatorVC() else {return}
         
         mainTabBar.viewControllers = [mainListViewController, categoryViewController]
         window.rootViewController = mainTabBar
@@ -53,6 +55,17 @@ class MainTabBarCoordinator: Coordinator {
         
         return categoryViewController
     }
+    
+//    private func creatTesteCoordinatorVC() -> UINavigationController? {
+//
+//        addReleaseCoordinator = .init(root: rootViewController)
+//        addReleaseCoordinator?.start()
+//        guard let testeViewController = addReleaseCoordinator?.controller else {return nil}
+//        let mainListImage = UIImage(systemName: "xmark")
+//        testeViewController.tabBarItem = .init(title: "TestView", image: mainListImage, tag: 0)
+//
+//        return testeViewController
+//    }
     
     private func configureTabBarStyle() {
         mainTabBar.tabBar.backgroundImage = UIImage()

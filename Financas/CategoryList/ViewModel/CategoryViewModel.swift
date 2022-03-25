@@ -12,12 +12,7 @@ protocol CategoryViewModelProtocol {
 }
 
 class CategoryViewModel {
-    
-//    var coordinator: MainCoordinatorProtocol
-//    
-//    init(coordinator: MainCoordinatorProtocol) {
-//        self.coordinator = coordinator
-//    }
+
 }
 
 extension CategoryViewModel: CategoryViewModelProtocol {

@@ -85,7 +85,11 @@ class MainListViewController: UIViewController {
     
     // Função de seleção do Botão de adicionar
     @objc private func tappedAddReleaseButton() {
-        viewModel.tappedAddReleaseButton()
+        
+        let viewModel = AddReleaseViewModel()
+        let viewController: AddReleasesViewController = .init(viewModel: viewModel)
+        self.navigationController?.present(viewController, animated: true)
+//        viewModel.tappedAddReleaseButton()
     }
     
     private func settingsBackGround() {
@@ -200,25 +204,17 @@ extension MainListViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-//    // Criando e editando função de arraste da TableViewCell - Direita para esquerda - DELETE
-//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-//            print("Arraste Deletar")
-//        }
-//        return [delete]
-//    }
-    
     // Criando e editando função de arraste da TableViewCell - esquerda para direita - EDIT
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let add = UIContextualAction (style: . normal , title: "Editar" ) { (action, view, complete ) in
+        let adit = UIContextualAction (style: . normal , title: "Editar" ) { (action, view, complete ) in
             print("Arraste Editar")
             self.isEditing = false
         }
         // Editando a cor de fundo do arraste EDITAR
-        add.backgroundColor = UIColor(displayP3Red: 94/255, green: 163/255, blue: 163/255, alpha: 1.0)
+        adit.backgroundColor = UIColor(displayP3Red: 94/255, green: 163/255, blue: 163/255, alpha: 1.0)
         
-        let config = UISwipeActionsConfiguration (actions:[add])
+        let config = UISwipeActionsConfiguration (actions:[adit])
         return config
     }
 

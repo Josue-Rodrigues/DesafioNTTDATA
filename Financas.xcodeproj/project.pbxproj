@@ -21,6 +21,9 @@
 		A83DCE4027EDDC050045D575 /* MainListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83DCE3F27EDDC050045D575 /* MainListCoordinator.swift */; };
 		A83DCE4427EDF1340045D575 /* CategoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83DCE4327EDF1340045D575 /* CategoryCoordinator.swift */; };
 		A83DCE4E27EE0A3A0045D575 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83DCE4D27EE0A3A0045D575 /* DetailView.swift */; };
+		A83DCE5027EE16E20045D575 /* AddReleasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83DCE4F27EE16E20045D575 /* AddReleasesViewController.swift */; };
+		A83DCE5227EE200A0045D575 /* AddReleaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83DCE5127EE200A0045D575 /* AddReleaseViewModel.swift */; };
+		A83DCE5427EE209A0045D575 /* AddReleaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83DCE5327EE209A0045D575 /* AddReleaseCoordinator.swift */; };
 		A85FF9DD27EA33180038E638 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85FF9DC27EA33180038E638 /* CategoryTableViewCell.swift */; };
 		A85FF9DF27EA33430038E638 /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85FF9DE27EA33430038E638 /* CategoryDetail.swift */; };
 		A85FF9E127EBA4E50038E638 /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85FF9E027EBA4E50038E638 /* SegmentedControlView.swift */; };
@@ -51,6 +54,9 @@
 		A83DCE3F27EDDC050045D575 /* MainListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListCoordinator.swift; sourceTree = "<group>"; };
 		A83DCE4327EDF1340045D575 /* CategoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCoordinator.swift; sourceTree = "<group>"; };
 		A83DCE4D27EE0A3A0045D575 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		A83DCE4F27EE16E20045D575 /* AddReleasesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReleasesViewController.swift; sourceTree = "<group>"; };
+		A83DCE5127EE200A0045D575 /* AddReleaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReleaseViewModel.swift; sourceTree = "<group>"; };
+		A83DCE5327EE209A0045D575 /* AddReleaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReleaseCoordinator.swift; sourceTree = "<group>"; };
 		A85FF9DC27EA33180038E638 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		A85FF9DE27EA33430038E638 /* CategoryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetail.swift; sourceTree = "<group>"; };
 		A85FF9E027EBA4E50038E638 /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
@@ -213,6 +219,7 @@
 		A83DCE4B27EE09200045D575 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				A83DCE4F27EE16E20045D575 /* AddReleasesViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -220,6 +227,7 @@
 		A83DCE4C27EE09280045D575 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				A83DCE5127EE200A0045D575 /* AddReleaseViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -264,6 +272,7 @@
 				A83DCE3D27EDD5980045D575 /* MainTabBarCoordinator.swift */,
 				A83DCE3F27EDDC050045D575 /* MainListCoordinator.swift */,
 				A83DCE4327EDF1340045D575 /* CategoryCoordinator.swift */,
+				A83DCE5327EE209A0045D575 /* AddReleaseCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -447,15 +456,18 @@
 				A80D750E27E908D1006600B7 /* ReleasesTableViewCell.swift in Sources */,
 				A80D750B27E907AA006600B7 /* OutputDetailView.swift in Sources */,
 				A8B1CF7827ECE44B006CE59A /* MainListViewController.swift in Sources */,
+				A83DCE5427EE209A0045D575 /* AddReleaseCoordinator.swift in Sources */,
 				A83DCE3E27EDD5980045D575 /* MainTabBarCoordinator.swift in Sources */,
 				A8B1CF8027ED28C8006CE59A /* CategoryViewModel.swift in Sources */,
 				A8B1CF7127ECDDD6006CE59A /* MainCoordinator.swift in Sources */,
 				A83DCE4E27EE0A3A0045D575 /* DetailView.swift in Sources */,
+				A83DCE5227EE200A0045D575 /* AddReleaseViewModel.swift in Sources */,
 				A80D751127E913B6006600B7 /* ReleasesDetail.swift in Sources */,
 				A83DCE4027EDDC050045D575 /* MainListCoordinator.swift in Sources */,
 				A85FF9E127EBA4E50038E638 /* SegmentedControlView.swift in Sources */,
 				A80D753427EA2AAD006600B7 /* TabBarViewController.swift in Sources */,
 				A85FF9DF27EA33430038E638 /* CategoryDetail.swift in Sources */,
+				A83DCE5027EE16E20045D575 /* AddReleasesViewController.swift in Sources */,
 				A8B1CF7627ECE440006CE59A /* MainListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
