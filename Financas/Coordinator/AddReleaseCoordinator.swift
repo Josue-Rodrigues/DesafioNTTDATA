@@ -19,6 +19,6 @@ class AddReleaseCoordinator: Coordinator {
     func start() {
         let viewModel = AddReleaseViewModel()
         let viewController: AddReleasesViewController = .init(viewModel: viewModel)
-        controller = .init(rootViewController: viewController)
+        rootViewController.present(viewController, animated: true)
     }
 }

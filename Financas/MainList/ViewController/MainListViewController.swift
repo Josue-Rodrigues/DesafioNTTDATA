@@ -8,17 +8,7 @@
 import UIKit
 
 class MainListViewController: UIViewController {
-    
-    var segmentedControlView: SegmentedControlView? = SegmentedControlView()
-    
-    var releaseDetail:[ReleasesDetail] = [
-        ReleasesDetail(imageName: "VectorCima", title: "Salário", categories: " Contas Fixas ", value: "R$ 3.000,00", date: "29 Dez"),
-        ReleasesDetail(imageName: "VectorBaixo", title: "Luz", categories: " Contas Fixas ", value: "R$ 100,00", date: "19 Dez"),
-        ReleasesDetail(imageName: "VectorBaixo", title: "Aguá", categories: " Contas Fixas ", value: "R$ 250,00", date: "12 Dez"),
-        ReleasesDetail(imageName: "VectorBaixo", title: "Internet", categories: " Contas Fixas ", value: "R$ 80,00", date: "10 Dez"),
-        ReleasesDetail(imageName: "VectorBaixo", title: "Aluguel", categories: " Contas Fixas ", value: "R$ 900,00", date: "09 Dez")
-    ]
-    
+        
     var viewModel: MainListViewModelProtocol
     
     lazy var segmentedControl: SegmentedControlView = {
@@ -48,13 +38,13 @@ class MainListViewController: UIViewController {
         return outputDetailView
     }()
     
-    lazy var releasesTableViewCell: UITableView = {
-        let releasesTableViewCell = UITableView()
-        releasesTableViewCell.backgroundColor = .white
+    lazy var releasesTableView: UITableView = {
+        let releasesTableView = UITableView()
+        releasesTableView.backgroundColor = .white
         // Adicionando/Registrando nossas celulas dentro de nossa TableView
-        releasesTableViewCell.register(ReleasesTableViewCell.self, forCellReuseIdentifier: ReleasesTableViewCell.identifier)
+        releasesTableView.register(ReleasesTableViewCell.self, forCellReuseIdentifier: ReleasesTableViewCell.identifier)
         
-        return releasesTableViewCell
+        return releasesTableView
     }()
     
     override func viewDidLoad() {
@@ -63,7 +53,7 @@ class MainListViewController: UIViewController {
         self.setNavigationBar()
         //---------------------------------------------------------------
         self.settingTableViewProtocols(delegate: self, dataSource: self)
-        self.segmentedControlView?.delegate(delegate: self)
+        self.segmentedControl.delegate(delegate: self)
         //---------------------------------------------------------------
         self.settingsSuperView()
         self.settingsBackGround()
@@ -71,6 +61,10 @@ class MainListViewController: UIViewController {
         self.settingEntryDetailViewConstraint()
         self.settingOutputDetailViewConstraint()
         self.settingReleasesTableViewCellConstraint()
+//        viewModel.updateView = { [weak self] in
+//            self?.releasesTableView.reloadData()
+//        }
+        viewModel.loadData()
     }
     
     // Função para setUp das caracterista da navigationController
@@ -85,11 +79,7 @@ class MainListViewController: UIViewController {
     
     // Função de seleção do Botão de adicionar
     @objc private func tappedAddReleaseButton() {
-        
-        let viewModel = AddReleaseViewModel()
-        let viewController: AddReleasesViewController = .init(viewModel: viewModel)
-        self.navigationController?.present(viewController, animated: true)
-//        viewModel.tappedAddReleaseButton()
+        viewModel.tappedAddReleaseButton()
     }
     
     private func settingsBackGround() {
@@ -98,18 +88,18 @@ class MainListViewController: UIViewController {
     
     // Função para configuração do delegate e dataSource em nossa tableView
     public func settingTableViewProtocols(delegate:UITableViewDelegate, dataSource:UITableViewDataSource) {
-        self.releasesTableViewCell.delegate = delegate
-        self.releasesTableViewCell.dataSource = dataSource
+        self.releasesTableView.delegate = delegate
+        self.releasesTableView.dataSource = dataSource
     }
     
     func settingsSuperView() {
         self.view.addSubview(self.segmentedControl)
         self.view.addSubview(self.entryDetailView)
         self.view.addSubview(self.outputDetailView)
-        self.view.addSubview(self.releasesTableViewCell)
+        self.view.addSubview(self.releasesTableView)
     }
     
-    init(viewModel:MainListViewModel) {
+    init(viewModel:MainListViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -147,7 +137,7 @@ class MainListViewController: UIViewController {
     }
     
     func settingReleasesTableViewCellConstraint() {
-        self.releasesTableViewCell.snp.makeConstraints { make in
+        self.releasesTableView.snp.makeConstraints { make in
             make.top.equalTo(self.entryDetailView.snp.bottom)
             make.left.right.bottom.equalToSuperview()
         }
@@ -156,26 +146,20 @@ class MainListViewController: UIViewController {
 
 // Colocando no HomeViewController em conformidade com os protocolos de Delegate e DataSource
 extension MainListViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     // Função que determina a quantidade de celulas que terá a TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return releaseDetail.count
+        return viewModel.numberOfRows(section: section)
     }
     
     // Função para criação do Title da TableView
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Lançamentos"
+        return viewModel.titleForHeader(section: section)
     }
 
     // Função para ajuste e edição da fonte do Title da TableView
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-
-        if let header = view as? UITableViewHeaderFooterView {
-            header.textLabel!.font = UIFont.boldSystemFont(ofSize: 20)
-            header.textLabel?.textColor = UIColor.black
-            header.textLabel?.frame = header.frame
-            header.textLabel?.textAlignment = .left
-        }
+        viewModel.setUpHeaderView(section: section, view: view)
     }
 
     // Função para ajuste da altura do titulo da TableView
@@ -187,7 +171,7 @@ extension MainListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell:ReleasesTableViewCell? = tableView.dequeueReusableCell(withIdentifier: ReleasesTableViewCell.identifier, for: indexPath) as? ReleasesTableViewCell
-        cell?.setUpCell(data: self.releaseDetail[indexPath.row])
+        cell?.setUpCell(data: viewModel.getReleaseDetail(row: indexPath.row))
         
         return cell ?? UITableViewCell()
     }

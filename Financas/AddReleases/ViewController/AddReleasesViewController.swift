@@ -15,15 +15,6 @@ class AddReleasesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = DetailView()
-        self.setNavigationBar()
-    }
-    
-    // Função para setUp das caracterista da navigationController
-    func setNavigationBar(){
-        // Setando o title de minha NavigationBar
-        navigationItem.title = "Adicionar lançamentos"
-        // Deixando o titulo do Navigation em LargeTitle (Aumentando a fonte)
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     init(viewModel:AddReleaseViewModel) {

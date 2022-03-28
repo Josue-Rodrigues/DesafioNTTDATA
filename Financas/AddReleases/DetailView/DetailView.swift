@@ -9,6 +9,16 @@ import UIKit
 
 class DetailView: UIView {
 
+    lazy var labelTitle: UILabel = {
+
+        let label = UILabel()
+        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 28)
+        label.text = "Adicionar lançamentos"
+
+        return label
+    }()
+    
     lazy var labelSpend: UILabel = {
 
         let label = UILabel()
@@ -32,7 +42,6 @@ class DetailView: UIView {
         textField.layer.cornerRadius = 4
         
         return textField
-        
     }()
     
     lazy var labelReleasesType: UILabel = {
@@ -97,7 +106,6 @@ class DetailView: UIView {
         textField.layer.cornerRadius = 4
         
         return textField
-        
     }()
     
     lazy var labelCategory: UILabel = {
@@ -123,7 +131,6 @@ class DetailView: UIView {
         textField.layer.cornerRadius = 4
         
         return textField
-        
     }()
     
     lazy var labelDate: UILabel = {
@@ -184,6 +191,7 @@ class DetailView: UIView {
         self.settingsSuperView()
         self.settingsBackGround()
         //----------------------------------------
+        self.settingLabelTitleConstraint()
         self.settingLabelSpendConstraint()
         self.settingTextFieldSpendConstraint()
         self.settingLabelReleasesTypeConstraint()
@@ -211,6 +219,7 @@ class DetailView: UIView {
     
     // Metodo de adição de nosso item em nossa SubView
     private func settingsSuperView() {
+        self.addSubview(self.labelTitle)
         self.addSubview(self.labelSpend)
         self.addSubview(self.textFieldSpend)
         self.addSubview(self.labelReleasesType)
@@ -227,9 +236,16 @@ class DetailView: UIView {
     }
     
     // FUNÇÕES DE CONSTRAINT DOS ITENS DA VIEW
+    func settingLabelTitleConstraint() {
+        self.labelTitle.snp.makeConstraints { make in
+            make.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(25)
+            make.centerX.equalToSuperview()
+        }
+    }
+    
     func settingLabelSpendConstraint() {
         self.labelSpend.snp.makeConstraints { make in
-            make.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(36)
+            make.top.equalTo(self.labelTitle.snp.bottom).offset(31)
             make.left.equalToSuperview().offset(17)
         }
     }
