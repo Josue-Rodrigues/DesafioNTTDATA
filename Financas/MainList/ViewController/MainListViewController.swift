@@ -64,7 +64,7 @@ class MainListViewController: UIViewController {
 //        viewModel.updateView = { [weak self] in
 //            self?.releasesTableView.reloadData()
 //        }
-        viewModel.loadData()
+        self.viewModel.loadData()
     }
     
     // Função para setUp das caracterista da navigationController
@@ -182,24 +182,12 @@ extension MainListViewController: UITableViewDelegate, UITableViewDataSource {
     
     // Criando e editando função de arraste da TableViewCell - Direita para esquerda - DELETE
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-
-        if editingStyle == UITableViewCell.EditingStyle.delete {
-            print("Arraste Deletar")
-        }
+        viewModel.edintingStyleCellRight(editingStyle: editingStyle)
     }
     
     // Criando e editando função de arraste da TableViewCell - esquerda para direita - EDIT
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
-        let adit = UIContextualAction (style: . normal , title: "Editar" ) { (action, view, complete ) in
-            print("Arraste Editar")
-            self.isEditing = false
-        }
-        // Editando a cor de fundo do arraste EDITAR
-        adit.backgroundColor = UIColor(displayP3Red: 94/255, green: 163/255, blue: 163/255, alpha: 1.0)
-        
-        let config = UISwipeActionsConfiguration (actions:[adit])
-        return config
+        viewModel.editingStyleCellLeft(tableView: tableView)
     }
 
     // Função para determinar o tamanho da TableView

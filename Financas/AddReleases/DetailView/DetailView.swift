@@ -7,8 +7,22 @@
 
 import UIKit
 
-class DetailView: UIView {
+protocol DetailViewProtocol: AnyObject { // O protocol tipo Class foi substituido pelo tipo AnyObject
+    func actionSegmentedControl(sender: UISegmentedControl)
+    func actionSaveButton()
+    func actionCancelButton()
+}
 
+class DetailView: UIView {
+    
+    var pickerView = UIPickerView()
+    
+    private var delegate: DetailViewProtocol?
+    
+    func delegate(delegate: DetailViewProtocol?){
+        self.delegate = delegate
+    }
+    
     lazy var labelTitle: UILabel = {
 
         let label = UILabel()
@@ -66,7 +80,7 @@ class DetailView: UIView {
         segmentedControl.backgroundColor = UIColor(displayP3Red: 159/255, green: 200/255, blue: 229/255, alpha: 0.7)
         segmentedControl.clipsToBounds = true
         segmentedControl.layer.cornerRadius = 8
-//        segmentedControl.addTarget(self, action: #selector(tappedSegmentedControlButton), for: .valueChanged)
+        segmentedControl.addTarget(self, action: #selector(tappedSegmentedControlButton), for: .valueChanged)
         
         return segmentedControl
     }()
@@ -127,10 +141,23 @@ class DetailView: UIView {
         textField.keyboardType = .default
         textField.placeholder = "Selecione categoria"
         textField.textColor = .darkGray
+        textField.font = UIFont.systemFont(ofSize: 16)
         textField.clipsToBounds = true
         textField.layer.cornerRadius = 4
-        
+        // Incluindo um PickerView dentro da TextField
+        textField.inputView = pickerView
+
         return textField
+    }()
+    
+    lazy var imageViewPicker:UIImageView = {
+        
+        let image = UIImageView()
+        image.image = UIImage(named: "Picker")
+        image.tintColor = .black
+        image.contentMode = .scaleAspectFit
+              
+        return image
     }()
     
     lazy var labelDate: UILabel = {
@@ -150,10 +177,11 @@ class DetailView: UIView {
         textField.backgroundColor = .white
         textField.borderStyle = .roundedRect
         textField.keyboardType = .default
-        textField.placeholder = "Selecione data"
+        textField.placeholder = "Selecione uma data"
         textField.textColor = .darkGray
         textField.clipsToBounds = true
         textField.layer.cornerRadius = 4
+        textField.inputView = datePicker
         
         return textField
     }()
@@ -167,7 +195,7 @@ class DetailView: UIView {
         button.clipsToBounds = true
         button.layer.cornerRadius = 8
         button.backgroundColor = UIColor(displayP3Red: 94/255, green: 163/255, blue: 163/255, alpha: 1.0)
-//        button.addTarget(self, action: #selector(self.tappedLoginButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(self.tappedSaveButton), for: .touchUpInside)
         button.isEnabled = true
         
         return button
@@ -179,10 +207,42 @@ class DetailView: UIView {
         button.setTitle("Cancelar", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.setTitleColor(UIColor(displayP3Red: 94/255, green: 163/255, blue: 163/255, alpha: 1.0), for: .normal)
-//        button.addTarget(self, action: #selector(self.tappedRegisterButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(self.tappedCancelButton), for: .touchUpInside)
         
         return button
     }()
+    
+    lazy var datePicker: UIDatePicker = {
+        
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.locale = NSLocale.init(localeIdentifier: "pt-br") as Locale
+        datePicker.preferredDatePickerStyle = .wheels
+        datePicker.addTarget(self, action: #selector(self.displayDate(sender:)), for: .valueChanged)
+        
+        return datePicker
+    }()
+    
+    @objc func displayDate(sender: UIDatePicker) {
+        let format = DateFormatter()
+        format.dateFormat = "dd/MM/yyyy"
+        self.textFieldDate.text = format.string(from: sender.date)
+    }
+    
+    func creatToolBarPicker(){
+        
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: 0))
+        let closeButton = UIBarButtonItem(title: "Fechar", style: .plain, target: self, action: nil)
+        // Criando um espaço entre os Botões (.flexibleSpace)
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let selectButton = UIBarButtonItem(title: "Selecionar", style: .plain, target: self, action: nil)
+        let items = [closeButton, flexibleSpace, selectButton]
+
+        toolbar.setItems(items, animated: false)
+        toolbar.sizeToFit()
+
+        textFieldCategory.inputAccessoryView = toolbar
+    }
     
     // Metodo construtor do itens da View
     override init(frame: CGRect) {
@@ -201,6 +261,7 @@ class DetailView: UIView {
         self.settingTextFieldValueConstraint()
         self.settingLabelCategoryConstraint()
         self.settingTextFieldCategoryConstraint()
+        self.settingImageViewPickerConstraint()
         self.settingLabelDateConstraint()
         self.settingTextFieldDateConstraint()
         self.settingButtonSaveConstraint()
@@ -210,6 +271,18 @@ class DetailView: UIView {
     // Função de erro (Criada automaticamente)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    @objc fileprivate func tappedSegmentedControlButton(_ sender: UISegmentedControl) {
+        self.delegate?.actionSegmentedControl(sender: sender)
+    }
+    
+    @objc private func tappedSaveButton() {
+        self.delegate?.actionSaveButton()
+    }
+    
+    @objc private func tappedCancelButton() {
+        self.delegate?.actionCancelButton()
     }
     
     // Função para criação e edição do Backgound de nossa View
@@ -229,6 +302,7 @@ class DetailView: UIView {
         self.addSubview(self.textFieldValue)
         self.addSubview(self.labelCategory)
         self.addSubview(self.textFieldCategory)
+        self.addSubview(self.imageViewPicker)
         self.addSubview(self.labelDate)
         self.addSubview(self.textFieldDate)
         self.addSubview(self.buttonSave)
@@ -312,6 +386,13 @@ class DetailView: UIView {
             make.left.equalTo(self.textFieldSpend.snp.left)
             make.right.equalTo(self.textFieldSpend.snp.right)
             make.height.equalTo(40)
+        }
+    }
+    
+    func settingImageViewPickerConstraint() {
+        self.imageViewPicker.snp.makeConstraints { make in
+            make.centerY.equalTo(self.textFieldCategory.snp.centerY)
+            make.right.equalTo(self.textFieldSpend.snp.right).offset(-15)
         }
     }
     

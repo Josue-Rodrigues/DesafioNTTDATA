@@ -12,6 +12,8 @@ protocol MainListViewModelProtocol {
     func tappedAddReleaseButton()
     func numberOfRows(section: Int) -> Int
     func titleForHeader(section: Int) -> String
+    func edintingStyleCellRight(editingStyle: UITableViewCell.EditingStyle)
+    func editingStyleCellLeft(tableView: UITableView) -> UISwipeActionsConfiguration?
     func setUpHeaderView(section: Int, view: UIView)
     func getReleaseDetail(row: Int) -> ReleasesDetail
     func loadData()
@@ -66,6 +68,24 @@ extension MainListViewModel: MainListViewModelProtocol {
     
     func titleForHeader(section: Int) -> String {
         return "Lançamentos"
+    }
+    
+    func edintingStyleCellRight(editingStyle: UITableViewCell.EditingStyle) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            print("Arraste Deletar")
+        }
+    }
+    
+    func editingStyleCellLeft(tableView: UITableView) -> UISwipeActionsConfiguration? {
+        let adit = UIContextualAction (style: . normal , title: "Editar" ) { (action, view, complete ) in
+            print("Arraste Editar")
+            tableView.isEditing = false
+        }
+        // Editando a cor de fundo do arraste EDITAR
+        adit.backgroundColor = UIColor(displayP3Red: 94/255, green: 163/255, blue: 163/255, alpha: 1.0)
+        
+        let config = UISwipeActionsConfiguration (actions:[adit])
+        return config
     }
     
     func setUpHeaderView(section: Int, view: UIView) {

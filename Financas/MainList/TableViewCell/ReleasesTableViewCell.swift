@@ -45,8 +45,8 @@ class ReleasesTableViewCell: UITableViewCell {
     lazy var labelValue:UILabel = {
         
         let label = UILabel()
-        label.font = .systemFont(ofSize: 14)
-        label.textColor = .blue
+        label.font = .boldSystemFont(ofSize: 14)
+        label.textColor = UIColor(displayP3Red: 159/255, green: 200/255, blue: 229/255, alpha: 1.0)
         
         return label
     }()

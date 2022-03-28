@@ -11,16 +11,6 @@ class CategoryViewController: UIViewController {
     
     var viewModel: CategoryViewModel
     
-    var categoryDetail:[CategoryDetail] = [
-        CategoryDetail(title: "Automovel", description: "Funilaria e Pintura"),
-        CategoryDetail(title: "Casa", description: "Fechamento da sacada"),
-        CategoryDetail(title: "Mercado", description: "Compra do mês"),
-        CategoryDetail(title: "Contas Fixas", description: "Salario de Janeiro"),
-        CategoryDetail(title: "Contas Fixas", description: "Conta de água - Mês de Janeiro"),
-        CategoryDetail(title: "Contas Fixas", description: "Conta de luz - Mês de Janeiro"),
-        CategoryDetail(title: "Contas Fixas", description: "Conta de intenet - Mês de Janeiro")
-    ]
-    
     lazy var categoryTableViewCell: UITableView = {
         let categoryTableViewCell = UITableView()
         categoryTableViewCell.backgroundColor = .white
@@ -39,6 +29,8 @@ class CategoryViewController: UIViewController {
         self.settingsSuperView()
         self.settingsBackGround()
         self.settingCategoryTableViewCellConstraint()
+        
+        self.viewModel.loadData()
     }
     
     // Função para setUp das caracterista da navigationController
@@ -92,14 +84,14 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     // Função que determina a quantidade de celulas que terá a TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categoryDetail.count
+        return viewModel.numberOfRows(section: section)
     }
     
     // Função de criação da Celula da TableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell:CategoryTableViewCell? = tableView.dequeueReusableCell(withIdentifier: CategoryTableViewCell.identifier, for: indexPath) as? CategoryTableViewCell
-        cell?.setUpCell(data: self.categoryDetail[indexPath.row])
+        cell?.setUpCell(data: self.viewModel.getCategoryDetail(row: indexPath.row))
         return cell ?? UITableViewCell()
     }
     

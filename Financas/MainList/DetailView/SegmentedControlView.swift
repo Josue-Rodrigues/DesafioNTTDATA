@@ -47,7 +47,7 @@ class SegmentedControlView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // Função de seleção do Botão de cadastro
+    // Função de seleção do Botão de segmentControll
     @objc fileprivate func tappedSegmentedControlButton(_ sender: UISegmentedControl) {
         self.delegate?.actionSegmentedControl(sender: sender)
     }

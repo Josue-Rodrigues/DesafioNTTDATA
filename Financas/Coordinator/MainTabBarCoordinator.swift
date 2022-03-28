@@ -70,7 +70,7 @@ class MainTabBarCoordinator: Coordinator {
     private func configureTabBarStyle() {
         mainTabBar.tabBar.backgroundImage = UIImage()
         mainTabBar.tabBar.shadowImage = UIImage()
-        mainTabBar.tabBar.tintColor = .black
+        mainTabBar.tabBar.tintColor = UIColor(displayP3Red: 94/255, green: 163/255, blue: 163/255, alpha: 1.0)
         mainTabBar.tabBar.clipsToBounds = true
     }
 }
