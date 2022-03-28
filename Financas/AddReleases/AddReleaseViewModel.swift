@@ -19,6 +19,7 @@ protocol AddReleaseViewModelProtocol {
 class AddReleaseViewModel {
     
     var category:[String] = []
+    weak var addReleaseCoordinator: AddReleaseCoordinator?
 }
 
 extension AddReleaseViewModel: AddReleaseViewModelProtocol {
@@ -42,6 +43,7 @@ extension AddReleaseViewModel: AddReleaseViewModelProtocol {
     }
     
     func actionCancelButton() {
+        addReleaseCoordinator?.cancel()
         print("Cancelar Novo Lançamento")
     }
     

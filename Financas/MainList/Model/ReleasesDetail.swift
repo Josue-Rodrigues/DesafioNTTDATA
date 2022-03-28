@@ -8,9 +8,9 @@
 import UIKit
 
 struct ReleasesDetail {
-    var imageName: String
-    var title: String
-    var categories: String
+    var name: String
+    var type: String
+    var category: String
     var value: String
     var date: String
 }

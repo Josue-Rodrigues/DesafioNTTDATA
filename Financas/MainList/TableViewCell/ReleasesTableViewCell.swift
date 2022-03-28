@@ -90,9 +90,9 @@ class ReleasesTableViewCell: UITableViewCell {
     
     // Função de chamada de nossa Model e atribuição de valores
     public func setUpCell(data:ReleasesDetail) {
-        self.imageName.image = UIImage(named:data.imageName)
-        self.labelTitle.text = data.title
-        self.labelCategories.text = data.categories
+        self.imageName.image = UIImage(named:data.name)
+        self.labelTitle.text = data.type
+        self.labelCategories.text = data.category
         self.labelValue.text = data.value
         self.labelDate.text = data.date
     }

@@ -98,7 +98,6 @@ class DetailView: UIView {
     lazy var imageViewValue:UIImageView = {
         
         let image = UIImageView()
-        
         image.image = UIImage(named: "VectorCima")
         image.tintColor = .black
         image.contentMode = .scaleAspectFit
@@ -150,7 +149,7 @@ class DetailView: UIView {
         return textField
     }()
     
-    lazy var imageViewPicker:UIImageView = {
+    lazy var imageViewPickerCategory:UIImageView = {
         
         let image = UIImageView()
         image.image = UIImage(named: "Picker")
@@ -184,6 +183,16 @@ class DetailView: UIView {
         textField.inputView = datePicker
         
         return textField
+    }()
+    
+    lazy var imageViewPickerDate:UIImageView = {
+        
+        let image = UIImageView()
+        image.image = UIImage(named: "Picker")
+        image.tintColor = .black
+        image.contentMode = .scaleAspectFit
+              
+        return image
     }()
     
     lazy var buttonSave: UIButton = {
@@ -242,6 +251,7 @@ class DetailView: UIView {
         toolbar.sizeToFit()
 
         textFieldCategory.inputAccessoryView = toolbar
+        textFieldDate.inputAccessoryView = toolbar
     }
     
     // Metodo construtor do itens da View
@@ -261,9 +271,10 @@ class DetailView: UIView {
         self.settingTextFieldValueConstraint()
         self.settingLabelCategoryConstraint()
         self.settingTextFieldCategoryConstraint()
-        self.settingImageViewPickerConstraint()
+        self.settingImageViewPickerCategoryConstraint()
         self.settingLabelDateConstraint()
         self.settingTextFieldDateConstraint()
+        self.settingImageViewPickerDateConstraint()
         self.settingButtonSaveConstraint()
         self.settingButtonCancelConstraint()
     }
@@ -302,9 +313,10 @@ class DetailView: UIView {
         self.addSubview(self.textFieldValue)
         self.addSubview(self.labelCategory)
         self.addSubview(self.textFieldCategory)
-        self.addSubview(self.imageViewPicker)
+        self.addSubview(self.imageViewPickerCategory)
         self.addSubview(self.labelDate)
         self.addSubview(self.textFieldDate)
+        self.addSubview(self.imageViewPickerDate)
         self.addSubview(self.buttonSave)
         self.addSubview(self.buttonCancel)
     }
@@ -389,8 +401,8 @@ class DetailView: UIView {
         }
     }
     
-    func settingImageViewPickerConstraint() {
-        self.imageViewPicker.snp.makeConstraints { make in
+    func settingImageViewPickerCategoryConstraint() {
+        self.imageViewPickerCategory.snp.makeConstraints { make in
             make.centerY.equalTo(self.textFieldCategory.snp.centerY)
             make.right.equalTo(self.textFieldSpend.snp.right).offset(-15)
         }
@@ -409,6 +421,13 @@ class DetailView: UIView {
             make.left.equalTo(self.textFieldSpend.snp.left)
             make.right.equalTo(self.textFieldSpend.snp.right)
             make.height.equalTo(40)
+        }
+    }
+    
+    func settingImageViewPickerDateConstraint() {
+        self.imageViewPickerDate.snp.makeConstraints { make in
+            make.centerY.equalTo(self.textFieldDate.snp.centerY)
+            make.right.equalTo(self.textFieldSpend.snp.right).offset(-15)
         }
     }
     

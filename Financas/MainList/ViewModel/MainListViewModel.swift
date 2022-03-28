@@ -105,11 +105,11 @@ extension MainListViewModel: MainListViewModelProtocol {
     func loadData() {
         
         self.releaseDetail = [
-            ReleasesDetail(imageName: "VectorCima", title: "Salário", categories: " Contas Fixas ", value: "R$ 3.000,00", date: "29 Dez"),
-            ReleasesDetail(imageName: "VectorBaixo", title: "Luz", categories: " Contas Fixas ", value: "R$ 100,00", date: "19 Dez"),
-            ReleasesDetail(imageName: "VectorBaixo", title: "Aguá", categories: " Contas Fixas ", value: "R$ 250,00", date: "12 Dez"),
-            ReleasesDetail(imageName: "VectorBaixo", title: "Internet", categories: " Contas Fixas ", value: "R$ 80,00", date: "10 Dez"),
-            ReleasesDetail(imageName: "VectorBaixo", title: "Aluguel", categories: " Contas Fixas ", value: "R$ 900,00", date: "09 Dez")
+            ReleasesDetail(name: "VectorCima", type: "Salário", category: " Contas Fixas ", value: "R$ 3.000,00", date: "29 Dez"),
+            ReleasesDetail(name: "VectorBaixo", type: "Luz", category: " Contas Fixas ", value: "R$ 100,00", date: "19 Dez"),
+            ReleasesDetail(name: "VectorBaixo", type: "Aguá", category: " Contas Fixas ", value: "R$ 250,00", date: "12 Dez"),
+            ReleasesDetail(name: "VectorBaixo", type: "Internet", category: " Contas Fixas ", value: "R$ 80,00", date: "10 Dez"),
+            ReleasesDetail(name: "VectorBaixo", type: "Aluguel", category: " Contas Fixas ", value: "R$ 900,00", date: "09 Dez")
         ]
     }
 }
