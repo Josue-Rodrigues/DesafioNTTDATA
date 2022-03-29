@@ -9,7 +9,7 @@ import UIKit
 
 class CategoryViewController: UIViewController {
     
-    var viewModel: CategoryViewModel
+    var viewModel: CategoryViewModelProtocol
     
     lazy var categoryTableViewCell: UITableView = {
         let categoryTableViewCell = UITableView()
@@ -48,7 +48,7 @@ class CategoryViewController: UIViewController {
         viewModel.tappedAddCategoryButton()
     }
     
-    init(viewModel:CategoryViewModel) {
+    init(viewModel:CategoryViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

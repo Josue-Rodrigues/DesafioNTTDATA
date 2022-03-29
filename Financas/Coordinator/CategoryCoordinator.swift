@@ -11,6 +11,7 @@ class CategoryCoordinator: Coordinator {
     
     private (set) var rootViewController: UIViewController
     private (set) var controller: UINavigationController?
+    private var coordinator: AddCategoryCoordinator?
     
     init(root: UIViewController) {
         self.rootViewController = root
@@ -19,6 +20,8 @@ class CategoryCoordinator: Coordinator {
     func start() {
         let viewModel = CategoryViewModel()
         let viewController: CategoryViewController = .init(viewModel: viewModel)
+        self.coordinator = AddCategoryCoordinator(root: viewController)
+        viewModel.addCategoryCoordinator = coordinator
         controller = .init(rootViewController: viewController)
     }
 }

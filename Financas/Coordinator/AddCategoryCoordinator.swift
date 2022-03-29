@@ -17,7 +17,6 @@ class AddCategoryCoordinator: Coordinator {
     }
     
     func start() {
-        
         let viewModel = AddCategoryViewModel()
         let viewController: AddCategoryViewController = .init(viewModel: viewModel)
         rootViewController.present(viewController, animated: true)
