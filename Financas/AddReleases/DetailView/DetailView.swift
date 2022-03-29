@@ -9,6 +9,8 @@ import UIKit
 
 protocol DetailViewProtocol: AnyObject { // O protocol tipo Class foi substituido pelo tipo AnyObject
     func actionSegmentedControl(sender: UISegmentedControl)
+    func actionSelectButton(view: DetailView)
+    func actionCancelButtonToolbar(view: DetailView)
     func actionSaveButton()
     func actionCancelButton()
 }
@@ -112,7 +114,7 @@ class DetailView: UIView {
         textField.autocorrectionType = .no
         textField.backgroundColor = .white
         textField.borderStyle = .roundedRect
-        textField.keyboardType = .default
+        textField.keyboardType = .numberPad
         textField.placeholder = "R$ 0.00"
         textField.textColor = .darkGray
         textField.clipsToBounds = true
@@ -205,7 +207,6 @@ class DetailView: UIView {
         button.layer.cornerRadius = 8
         button.backgroundColor = UIColor(displayP3Red: 94/255, green: 163/255, blue: 163/255, alpha: 1.0)
         button.addTarget(self, action: #selector(self.tappedSaveButton), for: .touchUpInside)
-        button.isEnabled = true
         
         return button
     }()
@@ -241,15 +242,17 @@ class DetailView: UIView {
     func creatToolBarPicker(){
         
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: 0))
-        let closeButton = UIBarButtonItem(title: "Fechar", style: .plain, target: self, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Fechar", style: .plain, target: self, action: #selector(tappedCancelButtonToolbar))
         // Criando um espaço entre os Botões (.flexibleSpace)
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let selectButton = UIBarButtonItem(title: "Selecionar", style: .plain, target: self, action: nil)
-        let items = [closeButton, flexibleSpace, selectButton]
+        // -----------------------------------------------------------------------------------------------
+        let selectButton = UIBarButtonItem(title: "Selecionar", style: .plain, target: self, action: #selector(tappedSelectButton))
+        let items = [cancelButton, flexibleSpace, selectButton]
 
         toolbar.setItems(items, animated: false)
         toolbar.sizeToFit()
 
+        // Inserindo a ToolBar dentro do Picker e TextField
         textFieldCategory.inputAccessoryView = toolbar
         textFieldDate.inputAccessoryView = toolbar
     }
@@ -283,9 +286,58 @@ class DetailView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
+    // Função para configuração do delegate de nossas textfield (Necessario para fazer as validações das textFields)
+    public func settingTextFieldDelegate (delegate:UITextFieldDelegate){
+        
+        self.textFieldSpend.delegate = delegate
+        self.textFieldValue.delegate = delegate
+        self.textFieldCategory.delegate = delegate
+        self.textFieldDate.delegate = delegate
+    }
+    
+    // Função para configuração da aparencia do Botton de acordo com seu Status
+    private func settingButtonEnable(_ enable: Bool) {
+        
+        if enable {
+            self.buttonSave.setTitleColor(.white, for: .normal)
+            self.buttonSave.backgroundColor = UIColor(displayP3Red: 94/255, green: 163/255, blue: 163/255, alpha: 1.0)
+            self.buttonSave.isEnabled = true
+            
+        }else{
+            self.buttonSave.setTitleColor(.black, for: .normal)
+            self.buttonSave.backgroundColor = .systemGray5
+            self.buttonSave.isEnabled = false
+        }
+    }
+    
+    // Função para validação dos campos
+    func validTextField() {
+        
+        let spend: String = self.textFieldSpend.text ?? ""
+        let value: String = self.textFieldValue.text ?? ""
+        let category: String = self.textFieldCategory.text ?? ""
+        let date: String = self.textFieldDate.text ?? ""
+        
+        if spend.isEmpty || value.isEmpty || category.isEmpty || date.isEmpty {
+            
+            self.settingButtonEnable(false)
+            
+        }else{
+            self.settingButtonEnable(true)
+        }
+    }
+    
     @objc fileprivate func tappedSegmentedControlButton(_ sender: UISegmentedControl) {
         self.delegate?.actionSegmentedControl(sender: sender)
+    }
+    
+    @objc func tappedSelectButton(){
+        self.delegate?.actionSelectButton(view: self)
+    }
+    
+    @objc func tappedCancelButtonToolbar(){
+        self.delegate?.actionCancelButtonToolbar(view: self)
     }
     
     @objc private func tappedSaveButton() {

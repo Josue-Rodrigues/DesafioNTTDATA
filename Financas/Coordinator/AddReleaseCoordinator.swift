@@ -22,9 +22,9 @@ class AddReleaseCoordinator: Coordinator {
         rootViewController.present(viewController, animated: true)
     }
     
-    func cancel(){
-        let viewModel = AddReleaseViewModel()
-        let viewController: AddReleasesViewController = .init(viewModel: viewModel)
-        self.rootViewController.navigationController?.pushViewController(viewController, animated: true)
-    }
+//    func cancel(){
+//        let viewModel = AddReleaseViewModel()
+//        let viewController: AddReleasesViewController = .init(viewModel: viewModel)
+//        rootViewController.pushViewController(viewController, animated: true)
+//    }
 }

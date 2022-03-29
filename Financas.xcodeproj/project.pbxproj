@@ -27,6 +27,10 @@
 		A85FF9DD27EA33180038E638 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85FF9DC27EA33180038E638 /* CategoryTableViewCell.swift */; };
 		A85FF9DF27EA33430038E638 /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85FF9DE27EA33430038E638 /* CategoryDetail.swift */; };
 		A85FF9E127EBA4E50038E638 /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85FF9E027EBA4E50038E638 /* SegmentedControlView.swift */; };
+		A8B0265127F378D800A1A738 /* AddCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B0265027F378D800A1A738 /* AddCategoryViewModel.swift */; };
+		A8B0265327F378ED00A1A738 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B0265227F378ED00A1A738 /* AddCategoryViewController.swift */; };
+		A8B0265527F3790800A1A738 /* AddCategoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B0265427F3790800A1A738 /* AddCategoryDetailView.swift */; };
+		A8B0265727F3793400A1A738 /* AddCategoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B0265627F3793400A1A738 /* AddCategoryCoordinator.swift */; };
 		A8B1CF7127ECDDD6006CE59A /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B1CF7027ECDDD6006CE59A /* MainCoordinator.swift */; };
 		A8B1CF7627ECE440006CE59A /* MainListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B1CF7527ECE440006CE59A /* MainListViewModel.swift */; };
 		A8B1CF7827ECE44B006CE59A /* MainListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B1CF7727ECE44B006CE59A /* MainListViewController.swift */; };
@@ -60,6 +64,10 @@
 		A85FF9DC27EA33180038E638 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		A85FF9DE27EA33430038E638 /* CategoryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetail.swift; sourceTree = "<group>"; };
 		A85FF9E027EBA4E50038E638 /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
+		A8B0265027F378D800A1A738 /* AddCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewModel.swift; sourceTree = "<group>"; };
+		A8B0265227F378ED00A1A738 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
+		A8B0265427F3790800A1A738 /* AddCategoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryDetailView.swift; sourceTree = "<group>"; };
+		A8B0265627F3793400A1A738 /* AddCategoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryCoordinator.swift; sourceTree = "<group>"; };
 		A8B1CF7027ECDDD6006CE59A /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		A8B1CF7527ECE440006CE59A /* MainListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListViewModel.swift; sourceTree = "<group>"; };
 		A8B1CF7727ECE44B006CE59A /* MainListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +132,7 @@
 				A8B1CF7C27ED2874006CE59A /* CategoryList */,
 				A83DCE4527EE08860045D575 /* AddReleases */,
 				A83DCE4627EE08CF0045D575 /* EditReleases */,
+				A8B0264C27F3782500A1A738 /* AddCategory */,
 				A8B1CF7227ECE0C6006CE59A /* Default */,
 				A80D74F527E903C9006600B7 /* Assets.xcassets */,
 				A80D74F727E903C9006600B7 /* LaunchScreen.storyboard */,
@@ -256,6 +265,40 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
+		A8B0264C27F3782500A1A738 /* AddCategory */ = {
+			isa = PBXGroup;
+			children = (
+				A8B0264F27F3787B00A1A738 /* ViewModel */,
+				A8B0264E27F3787300A1A738 /* ViewController */,
+				A8B0264D27F3786900A1A738 /* DetailView */,
+			);
+			path = AddCategory;
+			sourceTree = "<group>";
+		};
+		A8B0264D27F3786900A1A738 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				A8B0265427F3790800A1A738 /* AddCategoryDetailView.swift */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		A8B0264E27F3787300A1A738 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A8B0265227F378ED00A1A738 /* AddCategoryViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A8B0264F27F3787B00A1A738 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A8B0265027F378D800A1A738 /* AddCategoryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		A8B1CF7227ECE0C6006CE59A /* Default */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +316,7 @@
 				A83DCE3F27EDDC050045D575 /* MainListCoordinator.swift */,
 				A83DCE4327EDF1340045D575 /* CategoryCoordinator.swift */,
 				A83DCE5327EE209A0045D575 /* AddReleaseCoordinator.swift */,
+				A8B0265627F3793400A1A738 /* AddCategoryCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -446,6 +490,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8B0265127F378D800A1A738 /* AddCategoryViewModel.swift in Sources */,
 				A8B1CF8227ED28D6006CE59A /* CategoryViewController.swift in Sources */,
 				A85FF9DD27EA33180038E638 /* CategoryTableViewCell.swift in Sources */,
 				A80D750927E90770006600B7 /* EntryDetailView.swift in Sources */,
@@ -455,7 +500,9 @@
 				A80D74EC27E903C8006600B7 /* SceneDelegate.swift in Sources */,
 				A80D750E27E908D1006600B7 /* ReleasesTableViewCell.swift in Sources */,
 				A80D750B27E907AA006600B7 /* OutputDetailView.swift in Sources */,
+				A8B0265727F3793400A1A738 /* AddCategoryCoordinator.swift in Sources */,
 				A8B1CF7827ECE44B006CE59A /* MainListViewController.swift in Sources */,
+				A8B0265327F378ED00A1A738 /* AddCategoryViewController.swift in Sources */,
 				A83DCE5427EE209A0045D575 /* AddReleaseCoordinator.swift in Sources */,
 				A83DCE3E27EDD5980045D575 /* MainTabBarCoordinator.swift in Sources */,
 				A8B1CF8027ED28C8006CE59A /* CategoryViewModel.swift in Sources */,
@@ -469,6 +516,7 @@
 				A85FF9DF27EA33430038E638 /* CategoryDetail.swift in Sources */,
 				A83DCE5027EE16E20045D575 /* AddReleasesViewController.swift in Sources */,
 				A8B1CF7627ECE440006CE59A /* MainListViewModel.swift in Sources */,
+				A8B0265527F3790800A1A738 /* AddCategoryDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

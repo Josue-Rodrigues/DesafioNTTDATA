@@ -11,13 +11,20 @@ class AddReleasesViewController: UIViewController {
     
     var detailView: DetailView = DetailView()
     var viewModel: AddReleaseViewModelProtocol
+    
+    override func loadView() {
+        self.view = detailView
+        self.detailView.validTextField()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Iniciando a View como DETAILVIEW
-        self.view = detailView
+
         // Instacinando o delegate e DataSource da PickerView
         self.settingPickerViewProtocols(delegate: self, dataSource: self)
+        // Definindo que quem ira gerenciar minha delegate do Textfield será minha propria view
+        self.detailView.settingTextFieldDelegate(delegate: self)
+        // Instanciando meu Delegate para action do Button
         self.detailView.delegate(delegate: self)
         // Inicializando a ToolBarPicker
         self.detailView.creatToolBarPicker()
@@ -41,8 +48,19 @@ class AddReleasesViewController: UIViewController {
 }
 
 extension AddReleasesViewController: DetailViewProtocol {
+    
     func actionSegmentedControl(sender: UISegmentedControl) {
         viewModel.actionSegmentedControl(sender: sender)
+    }
+    
+    func actionSelectButton(view: DetailView) {
+        viewModel.actionSelectButton(view: view)
+    }
+    
+    func actionCancelButtonToolbar(view: DetailView) {
+        viewModel.actionCancelButtonToolbar(view: view)
+//        detailView.textFieldDate.text = ""
+//        detailView.textFieldCategory.text = ""
     }
     
     func actionSaveButton() {
@@ -69,5 +87,21 @@ extension AddReleasesViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         detailView.textFieldCategory.text = viewModel.titleForRow(row: row, component: component)
+    }
+}
+
+// Criando uma Extension para implementação do protocolo UITextFieldDelegate
+extension AddReleasesViewController: UITextFieldDelegate {
+    
+    // Informa ao delegate quando a seleção de texto é alterada
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        self.detailView.validTextField()
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+    }
+    
+    // Informa ao delegate quando a edição é interrompida
+    func textFieldDidEndEditing(_ textField: UITextField) {
     }
 }

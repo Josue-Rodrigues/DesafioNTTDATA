@@ -16,8 +16,8 @@ protocol CategoryViewModelProtocol {
 
 class CategoryViewModel {
 
+    weak var addCategoryCoordinator: AddCategoryCoordinator?
     private var categoryDetail:[CategoryDetail] = []
-    
 }
 
 extension CategoryViewModel: CategoryViewModelProtocol {
@@ -43,6 +43,7 @@ extension CategoryViewModel: CategoryViewModelProtocol {
     }
     
     func tappedAddCategoryButton() {
-        print("BOTÃO ADICIONAR CATEGORIA CLICADO")
+        addCategoryCoordinator?.start()
+        print("VIEW MODEL")
     }
 }
