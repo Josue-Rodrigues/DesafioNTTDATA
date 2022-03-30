@@ -58,7 +58,7 @@ class OutputDetailView: UIView {
     
     // Função para criação e edição do Backgound de nossa View
     private func settingsBackGround() {
-        self.backgroundColor = UIColor(displayP3Red: 249/255, green: 170/255, blue: 165/255, alpha: 1.0)
+        self.backgroundColor = CustomColor.appRedCustom
     }
     
     // Metodo de adição de nosso item em nossa SubView

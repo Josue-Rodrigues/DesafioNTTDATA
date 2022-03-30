@@ -58,7 +58,7 @@ class EntryDetailView: UIView {
     
     // Função para criação e edição do Backgound de nossa View
     private func settingsBackGround() {
-        self.backgroundColor = UIColor(displayP3Red: 159/255, green: 200/255, blue: 229/255, alpha: 1.0)
+        self.backgroundColor = CustomColor.appBlueCustom
     }
     
     // Metodo de adição de nosso item em nossa SubView

@@ -27,6 +27,12 @@
 		A85FF9DD27EA33180038E638 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85FF9DC27EA33180038E638 /* CategoryTableViewCell.swift */; };
 		A85FF9DF27EA33430038E638 /* CategoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85FF9DE27EA33430038E638 /* CategoryDetail.swift */; };
 		A85FF9E127EBA4E50038E638 /* SegmentedControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85FF9E027EBA4E50038E638 /* SegmentedControlView.swift */; };
+		A867812427F3B7C2000C5817 /* ImageViewValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A867812327F3B7C2000C5817 /* ImageViewValue.swift */; };
+		A867812A27F3C994000C5817 /* EditCategoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A867812927F3C994000C5817 /* EditCategoryDetailView.swift */; };
+		A867812C27F3C9A9000C5817 /* EditCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A867812B27F3C9A9000C5817 /* EditCategoryViewController.swift */; };
+		A867812E27F3C9BC000C5817 /* EditCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A867812D27F3C9BC000C5817 /* EditCategoryViewModel.swift */; };
+		A867813127F3D3B3000C5817 /* CustumColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A867813027F3D3B3000C5817 /* CustumColor.swift */; };
+		A867813327F3E17F000C5817 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A867813227F3E17F000C5817 /* TestViewController.swift */; };
 		A8B0265127F378D800A1A738 /* AddCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B0265027F378D800A1A738 /* AddCategoryViewModel.swift */; };
 		A8B0265327F378ED00A1A738 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B0265227F378ED00A1A738 /* AddCategoryViewController.swift */; };
 		A8B0265527F3790800A1A738 /* AddCategoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B0265427F3790800A1A738 /* AddCategoryDetailView.swift */; };
@@ -64,6 +70,12 @@
 		A85FF9DC27EA33180038E638 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		A85FF9DE27EA33430038E638 /* CategoryDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetail.swift; sourceTree = "<group>"; };
 		A85FF9E027EBA4E50038E638 /* SegmentedControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlView.swift; sourceTree = "<group>"; };
+		A867812327F3B7C2000C5817 /* ImageViewValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewValue.swift; sourceTree = "<group>"; };
+		A867812927F3C994000C5817 /* EditCategoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryDetailView.swift; sourceTree = "<group>"; };
+		A867812B27F3C9A9000C5817 /* EditCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryViewController.swift; sourceTree = "<group>"; };
+		A867812D27F3C9BC000C5817 /* EditCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryViewModel.swift; sourceTree = "<group>"; };
+		A867813027F3D3B3000C5817 /* CustumColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustumColor.swift; sourceTree = "<group>"; };
+		A867813227F3E17F000C5817 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		A8B0265027F378D800A1A738 /* AddCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewModel.swift; sourceTree = "<group>"; };
 		A8B0265227F378ED00A1A738 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 		A8B0265427F3790800A1A738 /* AddCategoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryDetailView.swift; sourceTree = "<group>"; };
@@ -127,12 +139,15 @@
 		A80D74E827E903C8006600B7 /* Financas */ = {
 			isa = PBXGroup;
 			children = (
+				A867813227F3E17F000C5817 /* TestViewController.swift */,
+				A867812F27F3D39E000C5817 /* Utils */,
 				A8B1CF7327ECE0FA006CE59A /* Coordinator */,
 				A8B1CF7427ECE42B006CE59A /* MainList */,
 				A8B1CF7C27ED2874006CE59A /* CategoryList */,
 				A83DCE4527EE08860045D575 /* AddReleases */,
 				A83DCE4627EE08CF0045D575 /* EditReleases */,
 				A8B0264C27F3782500A1A738 /* AddCategory */,
+				A867812527F3C92D000C5817 /* EditCategory */,
 				A8B1CF7227ECE0C6006CE59A /* Default */,
 				A80D74F527E903C9006600B7 /* Assets.xcassets */,
 				A80D74F727E903C9006600B7 /* LaunchScreen.storyboard */,
@@ -221,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				A83DCE4D27EE0A3A0045D575 /* DetailView.swift */,
+				A867812327F3B7C2000C5817 /* ImageViewValue.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -263,6 +279,48 @@
 				A85FF9DC27EA33180038E638 /* CategoryTableViewCell.swift */,
 			);
 			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		A867812527F3C92D000C5817 /* EditCategory */ = {
+			isa = PBXGroup;
+			children = (
+				A867812827F3C978000C5817 /* ViewModel */,
+				A867812727F3C970000C5817 /* ViewController */,
+				A867812627F3C952000C5817 /* DetailView */,
+			);
+			path = EditCategory;
+			sourceTree = "<group>";
+		};
+		A867812627F3C952000C5817 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				A867812927F3C994000C5817 /* EditCategoryDetailView.swift */,
+			);
+			path = DetailView;
+			sourceTree = "<group>";
+		};
+		A867812727F3C970000C5817 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A867812B27F3C9A9000C5817 /* EditCategoryViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A867812827F3C978000C5817 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				A867812D27F3C9BC000C5817 /* EditCategoryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		A867812F27F3D39E000C5817 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A867813027F3D3B3000C5817 /* CustumColor.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		A8B0264C27F3782500A1A738 /* AddCategory */ = {
@@ -490,20 +548,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A867812C27F3C9A9000C5817 /* EditCategoryViewController.swift in Sources */,
 				A8B0265127F378D800A1A738 /* AddCategoryViewModel.swift in Sources */,
 				A8B1CF8227ED28D6006CE59A /* CategoryViewController.swift in Sources */,
 				A85FF9DD27EA33180038E638 /* CategoryTableViewCell.swift in Sources */,
 				A80D750927E90770006600B7 /* EntryDetailView.swift in Sources */,
+				A867812E27F3C9BC000C5817 /* EditCategoryViewModel.swift in Sources */,
 				A80D74F427E903C8006600B7 /* Financas.xcdatamodeld in Sources */,
 				A83DCE4427EDF1340045D575 /* CategoryCoordinator.swift in Sources */,
 				A80D74EA27E903C8006600B7 /* AppDelegate.swift in Sources */,
 				A80D74EC27E903C8006600B7 /* SceneDelegate.swift in Sources */,
 				A80D750E27E908D1006600B7 /* ReleasesTableViewCell.swift in Sources */,
 				A80D750B27E907AA006600B7 /* OutputDetailView.swift in Sources */,
+				A867813127F3D3B3000C5817 /* CustumColor.swift in Sources */,
+				A867813327F3E17F000C5817 /* TestViewController.swift in Sources */,
+				A867812A27F3C994000C5817 /* EditCategoryDetailView.swift in Sources */,
 				A8B0265727F3793400A1A738 /* AddCategoryCoordinator.swift in Sources */,
 				A8B1CF7827ECE44B006CE59A /* MainListViewController.swift in Sources */,
 				A8B0265327F378ED00A1A738 /* AddCategoryViewController.swift in Sources */,
 				A83DCE5427EE209A0045D575 /* AddReleaseCoordinator.swift in Sources */,
+				A867812427F3B7C2000C5817 /* ImageViewValue.swift in Sources */,
 				A83DCE3E27EDD5980045D575 /* MainTabBarCoordinator.swift in Sources */,
 				A8B1CF8027ED28C8006CE59A /* CategoryViewModel.swift in Sources */,
 				A8B1CF7127ECDDD6006CE59A /* MainCoordinator.swift in Sources */,

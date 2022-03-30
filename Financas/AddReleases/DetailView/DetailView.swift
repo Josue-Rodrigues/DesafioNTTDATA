@@ -79,7 +79,7 @@ class DetailView: UIView {
         segmentedControl.layer.cornerRadius = 6
         segmentedControl.layer.masksToBounds = true
         segmentedControl.tintColor = UIColor.black
-        segmentedControl.backgroundColor = UIColor(displayP3Red: 159/255, green: 200/255, blue: 229/255, alpha: 0.7)
+        segmentedControl.backgroundColor = .systemGray6
         segmentedControl.clipsToBounds = true
         segmentedControl.layer.cornerRadius = 8
         segmentedControl.addTarget(self, action: #selector(tappedSegmentedControlButton), for: .valueChanged)
@@ -97,20 +97,22 @@ class DetailView: UIView {
         return label
     }()
     
-    lazy var imageViewValue:UIImageView = {
-        
-        let image = UIImageView()
-        image.image = UIImage(named: "VectorCima")
-        image.tintColor = .black
-        image.contentMode = .scaleAspectFit
-        image.backgroundColor = .white
-              
-        return image
-    }()
+//    lazy var imageViewValue:UIImageView = {
+//
+//        let image = UIImageView()
+//        image.image = UIImage(named: "VectorCima")
+//        image.tintColor = .black
+//        image.contentMode = .scaleAspectFit
+//        image.backgroundColor = .white
+//
+//        return image
+//    }()
     
     lazy var textFieldValue: UITextField = {
         
         let textField = UITextField()
+        textField.leftView = ImageViewValue()
+        textField.leftViewMode = .always
         textField.autocorrectionType = .no
         textField.backgroundColor = .white
         textField.borderStyle = .roundedRect
@@ -205,7 +207,7 @@ class DetailView: UIView {
         button.setTitleColor(.white, for: .normal)
         button.clipsToBounds = true
         button.layer.cornerRadius = 8
-        button.backgroundColor = UIColor(displayP3Red: 94/255, green: 163/255, blue: 163/255, alpha: 1.0)
+        button.backgroundColor = CustomColor.appGreenCustom
         button.addTarget(self, action: #selector(self.tappedSaveButton), for: .touchUpInside)
         
         return button
@@ -233,16 +235,10 @@ class DetailView: UIView {
         return datePicker
     }()
     
-    @objc func displayDate(sender: UIDatePicker) {
-        let format = DateFormatter()
-        format.dateFormat = "dd/MM/yyyy"
-        self.textFieldDate.text = format.string(from: sender.date)
-    }
-    
     func creatToolBarPicker(){
         
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: 0))
-        let cancelButton = UIBarButtonItem(title: "Fechar", style: .plain, target: self, action: #selector(tappedCancelButtonToolbar))
+        let cancelButton = UIBarButtonItem(title: "Cancelar", style: .plain, target: self, action: #selector(tappedCancelButtonToolbar))
         // Criando um espaço entre os Botões (.flexibleSpace)
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         // -----------------------------------------------------------------------------------------------
@@ -270,7 +266,7 @@ class DetailView: UIView {
         self.settingLabelReleasesTypeConstraint()
         self.settingSegmentedControlConstraint()
         self.settingLabelValueConstraint()
-        self.settingImageViewValueConstraint()
+//        self.settingImageViewValueConstraint()
         self.settingTextFieldValueConstraint()
         self.settingLabelCategoryConstraint()
         self.settingTextFieldCategoryConstraint()
@@ -301,12 +297,12 @@ class DetailView: UIView {
         
         if enable {
             self.buttonSave.setTitleColor(.white, for: .normal)
-            self.buttonSave.backgroundColor = UIColor(displayP3Red: 94/255, green: 163/255, blue: 163/255, alpha: 1.0)
+            self.buttonSave.backgroundColor = CustomColor.appGreenCustom
             self.buttonSave.isEnabled = true
             
         }else{
-            self.buttonSave.setTitleColor(.black, for: .normal)
-            self.buttonSave.backgroundColor = .systemGray5
+            self.buttonSave.setTitleColor(.white, for: .normal)
+            self.buttonSave.backgroundColor = CustomColor.appLightGreenCustom
             self.buttonSave.isEnabled = false
         }
     }
@@ -330,6 +326,12 @@ class DetailView: UIView {
     
     @objc fileprivate func tappedSegmentedControlButton(_ sender: UISegmentedControl) {
         self.delegate?.actionSegmentedControl(sender: sender)
+    }
+    
+    @objc func displayDate(sender: UIDatePicker) {
+        let format = DateFormatter()
+        format.dateFormat = "dd/MM/yyyy"
+        self.textFieldDate.text = format.string(from: sender.date)
     }
     
     @objc func tappedSelectButton(){
@@ -361,7 +363,7 @@ class DetailView: UIView {
         self.addSubview(self.labelReleasesType)
         self.addSubview(self.segmentedControl)
         self.addSubview(self.labelValue)
-        self.addSubview(self.imageViewValue)
+//        self.addSubview(self.imageViewValue)
         self.addSubview(self.textFieldValue)
         self.addSubview(self.labelCategory)
         self.addSubview(self.textFieldCategory)
@@ -420,18 +422,18 @@ class DetailView: UIView {
         }
     }
     
-    func settingImageViewValueConstraint() {
-        self.imageViewValue.snp.makeConstraints { make in
-            make.centerY.equalTo(self.textFieldValue.snp.centerY)
-            make.left.equalToSuperview().offset(23)
-            make.height.width.equalTo(25)
-        }
-    }
+//    func settingImageViewValueConstraint() {
+//        self.imageViewValue.snp.makeConstraints { make in
+//            make.centerY.equalTo(self.textFieldValue.snp.centerY)
+//            make.left.equalToSuperview().offset(23)
+//            make.height.width.equalTo(25)
+//        }
+//    }
     
     func settingTextFieldValueConstraint() {
         self.textFieldValue.snp.makeConstraints { make in
             make.top.equalTo(self.labelValue.snp.bottom).offset(4)
-            make.left.equalTo(self.imageViewValue.snp.right).offset(15)
+            make.left.equalTo(self.textFieldSpend.snp.left)
             make.right.equalTo(self.textFieldSpend.snp.right)
             make.height.equalTo(40)
         }

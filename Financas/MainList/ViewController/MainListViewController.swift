@@ -182,7 +182,7 @@ extension MainListViewController: UITableViewDelegate, UITableViewDataSource {
     
     // Criando e editando função de arraste da TableViewCell - Direita para esquerda - DELETE
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        viewModel.edintingStyleCellRight(editingStyle: editingStyle)
+        viewModel.edintingStyleCellRight(editingStyle: editingStyle, tableView: tableView, indexPath: indexPath)
     }
     
     // Criando e editando função de arraste da TableViewCell - esquerda para direita - EDIT

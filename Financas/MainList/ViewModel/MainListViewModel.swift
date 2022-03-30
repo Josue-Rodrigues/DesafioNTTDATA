@@ -12,7 +12,7 @@ protocol MainListViewModelProtocol {
     func tappedAddReleaseButton()
     func numberOfRows(section: Int) -> Int
     func titleForHeader(section: Int) -> String
-    func edintingStyleCellRight(editingStyle: UITableViewCell.EditingStyle)
+    func edintingStyleCellRight(editingStyle: UITableViewCell.EditingStyle, tableView: UITableView, indexPath: IndexPath)
     func editingStyleCellLeft(tableView: UITableView) -> UISwipeActionsConfiguration?
     func setUpHeaderView(section: Int, view: UIView)
     func getReleaseDetail(row: Int) -> ReleasesDetail
@@ -70,9 +70,11 @@ extension MainListViewModel: MainListViewModelProtocol {
         return "Lançamentos"
     }
     
-    func edintingStyleCellRight(editingStyle: UITableViewCell.EditingStyle) {
+    func edintingStyleCellRight(editingStyle: UITableViewCell.EditingStyle, tableView: UITableView, indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
             print("Arraste Deletar")
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
         }
     }
     
@@ -82,7 +84,7 @@ extension MainListViewModel: MainListViewModelProtocol {
             tableView.isEditing = false
         }
         // Editando a cor de fundo do arraste EDITAR
-        adit.backgroundColor = UIColor(displayP3Red: 94/255, green: 163/255, blue: 163/255, alpha: 1.0)
+        adit.backgroundColor = CustomColor.appGreenCustom
         
         let config = UISwipeActionsConfiguration (actions:[adit])
         return config

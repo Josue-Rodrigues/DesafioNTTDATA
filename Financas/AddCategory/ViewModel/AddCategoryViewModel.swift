@@ -8,7 +8,8 @@
 import UIKit
 
 protocol AddCategoryViewModelProtocol {
-    
+    func actionSaveButton()
+    func actionCancelButton()
 }
 
 class AddCategoryViewModel {
@@ -17,4 +18,11 @@ class AddCategoryViewModel {
 
 extension AddCategoryViewModel: AddCategoryViewModelProtocol {
     
+    func actionSaveButton() {
+        print("Salvar Nova categoria")
+    }
+    
+    func actionCancelButton() {
+        print("Cancelar Nova categoria")
+    }
 }

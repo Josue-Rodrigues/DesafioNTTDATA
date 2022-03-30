@@ -7,16 +7,16 @@
 
 import UIKit
 
-protocol CategoryDetailViewProtocol: AnyObject { // O protocol tipo Class foi substituido pelo tipo AnyObject
+protocol AddCategoryDetailViewProtocol: AnyObject { // O protocol tipo Class foi substituido pelo tipo AnyObject
     func actionSaveButton()
     func actionCancelButton()
 }
 
 class AddCategoryDetailView: UIView {
         
-        private var delegate: CategoryDetailViewProtocol?
+        private var delegate: AddCategoryDetailViewProtocol?
         
-        func delegate(delegate: CategoryDetailViewProtocol?){
+        func delegate(delegate: AddCategoryDetailViewProtocol?){
             self.delegate = delegate
         }
         
