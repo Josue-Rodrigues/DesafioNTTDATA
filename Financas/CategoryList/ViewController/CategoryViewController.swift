@@ -96,6 +96,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelectRow(indexpath: indexPath)
     }
     
     // Função para determinar o tamanho da TableView

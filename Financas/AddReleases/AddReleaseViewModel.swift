@@ -11,8 +11,8 @@ protocol AddReleaseViewModelProtocol {
     func actionSegmentedControl(sender: UISegmentedControl)
     func actionSelectButton(view: DetailView)
     func actionCancelButtonToolbar(view: DetailView)
-    func actionSaveButton()
     func actionCancelButton()
+    func actionSaveButton()
     func loadDataPickerCategory()
     func numberOfRows(component: Int) -> Int
     func titleForRow(row: Int, component: Int) -> String
@@ -21,7 +21,7 @@ protocol AddReleaseViewModelProtocol {
 class AddReleaseViewModel {
     
     var category:[String] = []
-    weak var addReleaseCoordinator: AddReleaseCoordinator?
+    var addReleaseCoordinator: AddReleaseCoordinator?
     var detailView: DetailView = DetailView()
 }
 
@@ -40,9 +40,14 @@ extension AddReleaseViewModel: AddReleaseViewModelProtocol {
         }
     }
     
+    func actionCancelButton() {
+        addReleaseCoordinator?.cancel()
+        print("Cancelar Novo Lançamento")
+    }
+    
     func actionSelectButton(view: DetailView) {
         view.endEditing(true)
-        detailView.validTextField()
+//        detailView.validTextField()
     }
     
     func actionCancelButtonToolbar(view: DetailView) {
@@ -55,11 +60,6 @@ extension AddReleaseViewModel: AddReleaseViewModelProtocol {
     
     func actionSaveButton() {
         print("Salvar Novo Lançamento")
-    }
-    
-    func actionCancelButton() {
-//        addReleaseCoordinator?.cancel()
-        print("Cancelar Novo Lançamento")
     }
     
     func loadDataPickerCategory() {

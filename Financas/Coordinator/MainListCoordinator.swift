@@ -21,8 +21,10 @@ class MainListCoordinator: Coordinator {
         
         let viewModel = MainListViewModel()
         let viewController: MainListViewController = .init(viewModel: viewModel)
+        
         self.coordinator = AddReleaseCoordinator(root: viewController)
         viewModel.addReleaseCoordinator = coordinator
+        
         controller = .init(rootViewController: viewController)
     }
 }

@@ -15,6 +15,12 @@ protocol DetailViewProtocol: AnyObject { // O protocol tipo Class foi substituid
     func actionCancelButton()
 }
 
+extension String {
+    func onlyNumbers() -> String {
+        return self.replacingOccurrences(of: "[ˆ0-9]", with: "", options: .regularExpression)
+    }
+}
+
 class DetailView: UIView {
     
     var pickerView = UIPickerView()
@@ -121,6 +127,7 @@ class DetailView: UIView {
         textField.textColor = .darkGray
         textField.clipsToBounds = true
         textField.layer.cornerRadius = 4
+        textField.addTarget(self, action: #selector(formatCurrenty(textfield:)), for: .editingChanged)
         
         return textField
     }()
@@ -322,6 +329,21 @@ class DetailView: UIView {
         }else{
             self.settingButtonEnable(true)
         }
+    }
+    
+    @objc func formatCurrenty(textfield: UITextField) {
+        guard let text = textfield.text else {
+            return
+        }
+        
+        let numberValue = Int(text.onlyNumbers()) ?? 0
+        let doubleValue = Double(numberValue)/100.0
+        
+        let formatter = NumberFormatter()
+        formatter.locale = Locale(identifier: "pt_BR")
+        formatter.numberStyle = .currency
+        
+        textfield.text = formatter.string(from: doubleValue as NSNumber)
     }
     
     @objc fileprivate func tappedSegmentedControlButton(_ sender: UISegmentedControl) {

@@ -82,6 +82,7 @@ extension MainListViewModel: MainListViewModelProtocol {
         let adit = UIContextualAction (style: . normal , title: "Editar" ) { (action, view, complete ) in
             print("Arraste Editar")
             tableView.isEditing = false
+            self.addReleaseCoordinator?.start()
         }
         // Editando a cor de fundo do arraste EDITAR
         adit.backgroundColor = CustomColor.appGreenCustom

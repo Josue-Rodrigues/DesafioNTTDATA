@@ -11,16 +11,23 @@ protocol CategoryViewModelProtocol {
     func tappedAddCategoryButton()
     func numberOfRows(section: Int) -> Int
     func loadData()
+    func didSelectRow(indexpath: IndexPath)
     func getCategoryDetail(row: Int) -> CategoryDetail
 }
 
 class CategoryViewModel {
 
     weak var addCategoryCoordinator: AddCategoryCoordinator?
+    weak var editCategoryCoordinator: EditCategoryCoordinator?
     private var categoryDetail:[CategoryDetail] = []
 }
 
 extension CategoryViewModel: CategoryViewModelProtocol {
+    func didSelectRow(indexpath: IndexPath) {
+        editCategoryCoordinator?.start()
+        print("PASSEI AQUI")
+    }
+    
     func getCategoryDetail(row: Int) -> CategoryDetail {
         return categoryDetail[row]
     }
