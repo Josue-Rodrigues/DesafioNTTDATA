@@ -1,26 +1,24 @@
 //
-//  AddReleaseCoordinator.swift
+//  EditReleaseCoordinator.swift
 //  Financas
 //
-//  Created by Josué Herrera Rodriguês on 25/03/22.
+//  Created by Josué Herrera Rodriguês on 31/03/22.
 //
 
 import UIKit
 
-class AddReleaseCoordinator: Coordinator {
+class EditReleaseCoordinator: Coordinator {
     
     private (set) var rootViewController: UIViewController
     private (set) var controller: UINavigationController?
-    
-    private var coordinatorMain: MainListCoordinator?
     
     init(root: UIViewController) {
         self.rootViewController = root
     }
     
     func start() {
-        let viewModel = AddReleaseViewModel()
-        let viewController: AddReleasesViewController = .init(viewModel: viewModel)
+        let viewModel = EditReleaseViewModel()
+        let viewController: EditReleaseViewController = .init(viewModel: viewModel)
         rootViewController.present(viewController, animated: true)
     }
     
@@ -28,11 +26,9 @@ class AddReleaseCoordinator: Coordinator {
         let viewModel = MainListViewModel()
         let viewController: MainListViewController = .init(viewModel: viewModel)
         
-        self.coordinatorMain = MainListCoordinator(root: viewController)
-        viewModel.mainListCoordinator = coordinatorMain
+        controller = .init(rootViewController: viewController)
         
         controller?.dismiss(animated: true)
         print("PASSEI AQUI")
     }
 }
-

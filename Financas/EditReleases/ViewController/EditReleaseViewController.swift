@@ -1,21 +1,20 @@
 //
-//  AddReleasesViewController.swift
+//  EditReleaseViewController.swift
 //  Financas
 //
-//  Created by Josué Herrera Rodriguês on 25/03/22.
+//  Created by Valeria Moreira pereira rodrigues on 31/03/22.
 //
 
 import UIKit
 
-class AddReleasesViewController: UIViewController {
+class EditReleaseViewController: UIViewController {
     
-    var alertController:Alert?
-    var detailView: DetailView = DetailView()
-    var viewModel: AddReleaseViewModelProtocol
+    var editReliaseDetailView: EditReleaseDetailView = EditReleaseDetailView()
+    var viewModel: EditReleaseViewModelProtocol
     
     override func loadView() {
-        self.view = detailView
-        self.detailView.validTextField()
+        self.view = editReliaseDetailView
+        self.editReliaseDetailView.validTextField()
     }
 
     override func viewDidLoad() {
@@ -24,18 +23,16 @@ class AddReleasesViewController: UIViewController {
         // Instacinando o delegate e DataSource da PickerView
         self.settingPickerViewProtocols(delegate: self, dataSource: self)
         // Definindo que quem ira gerenciar minha delegate do Textfield será minha propria view
-        self.detailView.settingTextFieldDelegate(delegate: self)
+        self.editReliaseDetailView.settingTextFieldDelegate(delegate: self)
         // Instanciando meu Delegate para action do Button
-        self.detailView.delegate(delegate: self)
+        self.editReliaseDetailView.delegate(delegate: self)
         // Inicializando a ToolBarPicker
-        self.detailView.creatToolBarPicker()
+        self.editReliaseDetailView.creatToolBarPicker()
         // Carregando os dados da PickerCategory
         self.viewModel.loadDataPickerCategory()
-        
-        self.alertController = Alert(controller: self)
     }
     
-    init(viewModel:AddReleaseViewModelProtocol) {
+    init(viewModel:EditReleaseViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -45,22 +42,22 @@ class AddReleasesViewController: UIViewController {
     }
     
     public func settingPickerViewProtocols(delegate:UIPickerViewDelegate, dataSource:UIPickerViewDataSource) {
-        self.detailView.pickerView.delegate = delegate
-        self.detailView.pickerView.dataSource = dataSource
+        self.editReliaseDetailView.pickerView.delegate = delegate
+        self.editReliaseDetailView.pickerView.dataSource = dataSource
     }
 }
 
-extension AddReleasesViewController: DetailViewProtocol {
+extension EditReleaseViewController: EditReleaseDetailViewProtocol {
     
     func actionSegmentedControl(sender: UISegmentedControl) {
         viewModel.actionSegmentedControl(sender: sender)
     }
     
-    func actionSelectButton(view: DetailView) {
+    func actionSelectButton(view: EditReleaseDetailView) {
         viewModel.actionSelectButton(view: view)
     }
     
-    func actionCancelButtonToolbar(view: DetailView) {
+    func actionCancelButtonToolbar(view: EditReleaseDetailView) {
         viewModel.actionCancelButtonToolbar(view: view)
 //        detailView.textFieldDate.text = ""
 //        detailView.textFieldCategory.text = ""
@@ -75,7 +72,7 @@ extension AddReleasesViewController: DetailViewProtocol {
     }
 }
 
-extension AddReleasesViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension EditReleaseViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -89,16 +86,16 @@ extension AddReleasesViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        detailView.textFieldCategory.text = viewModel.titleForRow(row: row, component: component)
+        editReliaseDetailView.textFieldCategory.text = viewModel.titleForRow(row: row, component: component)
     }
 }
 
 // Criando uma Extension para implementação do protocolo UITextFieldDelegate
-extension AddReleasesViewController: UITextFieldDelegate {
+extension EditReleaseViewController: UITextFieldDelegate {
     
     // Informa ao delegate quando a seleção de texto é alterada
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        self.detailView.validTextField()
+        self.editReliaseDetailView.validTextField()
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {

@@ -22,6 +22,8 @@ protocol MainListViewModelProtocol {
 class MainListViewModel {
     
    weak var addReleaseCoordinator: AddReleaseCoordinator?
+   weak var editReleaseCoordinator: EditReleaseCoordinator?
+   weak var mainListCoordinator: MainListCoordinator?
     
 //    var updateView: (() -> Void)?
     
@@ -82,7 +84,7 @@ extension MainListViewModel: MainListViewModelProtocol {
         let adit = UIContextualAction (style: . normal , title: "Editar" ) { (action, view, complete ) in
             print("Arraste Editar")
             tableView.isEditing = false
-            self.addReleaseCoordinator?.start()
+            self.editReleaseCoordinator?.start()
         }
         // Editando a cor de fundo do arraste EDITAR
         adit.backgroundColor = CustomColor.appGreenCustom

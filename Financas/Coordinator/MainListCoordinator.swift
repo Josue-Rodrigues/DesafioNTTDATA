@@ -11,7 +11,8 @@ class MainListCoordinator: Coordinator {
     
     private (set) var rootViewController: UIViewController
     private (set) var controller: UINavigationController?
-    private var coordinator: AddReleaseCoordinator?
+    private var coordinatorAdd: AddReleaseCoordinator?
+    private var coordinatorEdit: EditReleaseCoordinator?
     
     init(root: UIViewController) {
         self.rootViewController = root
@@ -22,8 +23,11 @@ class MainListCoordinator: Coordinator {
         let viewModel = MainListViewModel()
         let viewController: MainListViewController = .init(viewModel: viewModel)
         
-        self.coordinator = AddReleaseCoordinator(root: viewController)
-        viewModel.addReleaseCoordinator = coordinator
+        self.coordinatorAdd = AddReleaseCoordinator(root: viewController)
+        viewModel.addReleaseCoordinator = coordinatorAdd
+        
+        self.coordinatorEdit = EditReleaseCoordinator(root: viewController)
+        viewModel.editReleaseCoordinator = coordinatorEdit
         
         controller = .init(rootViewController: viewController)
     }

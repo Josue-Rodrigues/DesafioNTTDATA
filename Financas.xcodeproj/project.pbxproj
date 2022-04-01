@@ -31,7 +31,7 @@
 		A867812A27F3C994000C5817 /* EditCategoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A867812927F3C994000C5817 /* EditCategoryDetailView.swift */; };
 		A867812C27F3C9A9000C5817 /* EditCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A867812B27F3C9A9000C5817 /* EditCategoryViewController.swift */; };
 		A867812E27F3C9BC000C5817 /* EditCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A867812D27F3C9BC000C5817 /* EditCategoryViewModel.swift */; };
-		A867813127F3D3B3000C5817 /* CustumColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A867813027F3D3B3000C5817 /* CustumColor.swift */; };
+		A867813127F3D3B3000C5817 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A867813027F3D3B3000C5817 /* CustomColor.swift */; };
 		A867813327F3E17F000C5817 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A867813227F3E17F000C5817 /* TestViewController.swift */; };
 		A867813527F617CC000C5817 /* EditCategoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A867813427F617CC000C5817 /* EditCategoryCoordinator.swift */; };
 		A8B0265127F378D800A1A738 /* AddCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B0265027F378D800A1A738 /* AddCategoryViewModel.swift */; };
@@ -43,6 +43,12 @@
 		A8B1CF7827ECE44B006CE59A /* MainListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B1CF7727ECE44B006CE59A /* MainListViewController.swift */; };
 		A8B1CF8027ED28C8006CE59A /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B1CF7F27ED28C8006CE59A /* CategoryViewModel.swift */; };
 		A8B1CF8227ED28D6006CE59A /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B1CF8127ED28D6006CE59A /* CategoryViewController.swift */; };
+		A8DE02DB27F68E950064DA8F /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DE02DA27F68E950064DA8F /* Alert.swift */; };
+		A8E20BD427F66D1300393800 /* EditReleaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E20BD327F66D1300393800 /* EditReleaseCoordinator.swift */; };
+		A8E20BD627F66D6000393800 /* EditReleaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E20BD527F66D6000393800 /* EditReleaseViewModel.swift */; };
+		A8E20BD827F66EB900393800 /* EditReleaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E20BD727F66EB900393800 /* EditReleaseViewController.swift */; };
+		A8E20BDA27F66F8000393800 /* EditReleaseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E20BD927F66F8000393800 /* EditReleaseDetailView.swift */; };
+		A8E20BDC27F66FE700393800 /* CustomString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E20BDB27F66FE700393800 /* CustomString.swift */; };
 		EB82DAACF028A6CEADD160D5 /* Pods_Financas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9309FBC8F4A3CEF59B756609 /* Pods_Financas.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,7 +81,7 @@
 		A867812927F3C994000C5817 /* EditCategoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryDetailView.swift; sourceTree = "<group>"; };
 		A867812B27F3C9A9000C5817 /* EditCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryViewController.swift; sourceTree = "<group>"; };
 		A867812D27F3C9BC000C5817 /* EditCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryViewModel.swift; sourceTree = "<group>"; };
-		A867813027F3D3B3000C5817 /* CustumColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustumColor.swift; sourceTree = "<group>"; };
+		A867813027F3D3B3000C5817 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
 		A867813227F3E17F000C5817 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		A867813427F617CC000C5817 /* EditCategoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryCoordinator.swift; sourceTree = "<group>"; };
 		A8B0265027F378D800A1A738 /* AddCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewModel.swift; sourceTree = "<group>"; };
@@ -87,6 +93,12 @@
 		A8B1CF7727ECE44B006CE59A /* MainListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListViewController.swift; sourceTree = "<group>"; };
 		A8B1CF7F27ED28C8006CE59A /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		A8B1CF8127ED28D6006CE59A /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		A8DE02DA27F68E950064DA8F /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		A8E20BD327F66D1300393800 /* EditReleaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReleaseCoordinator.swift; sourceTree = "<group>"; };
+		A8E20BD527F66D6000393800 /* EditReleaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReleaseViewModel.swift; sourceTree = "<group>"; };
+		A8E20BD727F66EB900393800 /* EditReleaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReleaseViewController.swift; sourceTree = "<group>"; };
+		A8E20BD927F66F8000393800 /* EditReleaseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReleaseDetailView.swift; sourceTree = "<group>"; };
+		A8E20BDB27F66FE700393800 /* CustomString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomString.swift; sourceTree = "<group>"; };
 		BC1028D187FA2CDDA0AFD433 /* Pods-Financas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Financas.debug.xcconfig"; path = "Target Support Files/Pods-Financas/Pods-Financas.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,6 +228,7 @@
 		A83DCE4727EE08DF0045D575 /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
+				A8E20BD927F66F8000393800 /* EditReleaseDetailView.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -223,6 +236,7 @@
 		A83DCE4827EE08FD0045D575 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				A8E20BD727F66EB900393800 /* EditReleaseViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -230,6 +244,7 @@
 		A83DCE4927EE09080045D575 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				A8E20BD527F66D6000393800 /* EditReleaseViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -320,7 +335,9 @@
 		A867812F27F3D39E000C5817 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				A867813027F3D3B3000C5817 /* CustumColor.swift */,
+				A867813027F3D3B3000C5817 /* CustomColor.swift */,
+				A8E20BDB27F66FE700393800 /* CustomString.swift */,
+				A8DE02DA27F68E950064DA8F /* Alert.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -378,6 +395,7 @@
 				A83DCE5327EE209A0045D575 /* AddReleaseCoordinator.swift */,
 				A8B0265627F3793400A1A738 /* AddCategoryCoordinator.swift */,
 				A867813427F617CC000C5817 /* EditCategoryCoordinator.swift */,
+				A8E20BD327F66D1300393800 /* EditReleaseCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -561,11 +579,16 @@
 				A83DCE4427EDF1340045D575 /* CategoryCoordinator.swift in Sources */,
 				A80D74EA27E903C8006600B7 /* AppDelegate.swift in Sources */,
 				A80D74EC27E903C8006600B7 /* SceneDelegate.swift in Sources */,
+				A8E20BDC27F66FE700393800 /* CustomString.swift in Sources */,
 				A80D750E27E908D1006600B7 /* ReleasesTableViewCell.swift in Sources */,
 				A80D750B27E907AA006600B7 /* OutputDetailView.swift in Sources */,
-				A867813127F3D3B3000C5817 /* CustumColor.swift in Sources */,
+				A8E20BD427F66D1300393800 /* EditReleaseCoordinator.swift in Sources */,
+				A8E20BDA27F66F8000393800 /* EditReleaseDetailView.swift in Sources */,
+				A867813127F3D3B3000C5817 /* CustomColor.swift in Sources */,
+				A8E20BD827F66EB900393800 /* EditReleaseViewController.swift in Sources */,
 				A867813327F3E17F000C5817 /* TestViewController.swift in Sources */,
 				A867812A27F3C994000C5817 /* EditCategoryDetailView.swift in Sources */,
+				A8E20BD627F66D6000393800 /* EditReleaseViewModel.swift in Sources */,
 				A8B0265727F3793400A1A738 /* AddCategoryCoordinator.swift in Sources */,
 				A8B1CF7827ECE44B006CE59A /* MainListViewController.swift in Sources */,
 				A8B0265327F378ED00A1A738 /* AddCategoryViewController.swift in Sources */,
@@ -584,6 +607,7 @@
 				A85FF9DF27EA33430038E638 /* CategoryDetail.swift in Sources */,
 				A83DCE5027EE16E20045D575 /* AddReleasesViewController.swift in Sources */,
 				A8B1CF7627ECE440006CE59A /* MainListViewModel.swift in Sources */,
+				A8DE02DB27F68E950064DA8F /* Alert.swift in Sources */,
 				A8B0265527F3790800A1A738 /* AddCategoryDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,27 +1,27 @@
 //
-//  DetailView.swift
+//  EditReleaseDetailView.swift
 //  Financas
 //
-//  Created by Josué Herrera Rodriguês on 25/03/22.
+//  Created by Valeria Moreira pereira rodrigues on 31/03/22.
 //
 
 import UIKit
 
-protocol DetailViewProtocol: AnyObject { // O protocol tipo Class foi substituido pelo tipo AnyObject
+protocol EditReleaseDetailViewProtocol: AnyObject { // O protocol tipo Class foi substituido pelo tipo AnyObject
     func actionSegmentedControl(sender: UISegmentedControl)
-    func actionSelectButton(view: DetailView)
-    func actionCancelButtonToolbar(view: DetailView)
+    func actionSelectButton(view: EditReleaseDetailView)
+    func actionCancelButtonToolbar(view: EditReleaseDetailView)
     func actionSaveButton()
     func actionCancelButton()
 }
 
-class DetailView: UIView {
+class EditReleaseDetailView: UIView {
     
     var pickerView = UIPickerView()
     
-    private var delegate: DetailViewProtocol?
+    private var delegate: EditReleaseDetailViewProtocol?
     
-    func delegate(delegate: DetailViewProtocol?){
+    func delegate(delegate: EditReleaseDetailViewProtocol?){
         self.delegate = delegate
     }
     
@@ -30,7 +30,7 @@ class DetailView: UIView {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.boldSystemFont(ofSize: 28)
-        label.text = "Adicionar lançamentos"
+        label.text = "Editar lançamentos"
 
         return label
     }()

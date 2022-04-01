@@ -1,16 +1,16 @@
 //
-//  AddReleaseViewModel.swift
+//  EditReleaseViewModel.swift
 //  Financas
 //
-//  Created by Josué Herrera Rodrigues on 25/03/22.
+//  Created by Valeria Moreira pereira rodrigues on 31/03/22.
 //
 
 import UIKit
 
-protocol AddReleaseViewModelProtocol {
+protocol EditReleaseViewModelProtocol {
     func actionSegmentedControl(sender: UISegmentedControl)
-    func actionSelectButton(view: DetailView)
-    func actionCancelButtonToolbar(view: DetailView)
+    func actionSelectButton(view: EditReleaseDetailView)
+    func actionCancelButtonToolbar(view: EditReleaseDetailView)
     func actionCancelButton()
     func actionSaveButton()
     func loadDataPickerCategory()
@@ -18,16 +18,14 @@ protocol AddReleaseViewModelProtocol {
     func titleForRow(row: Int, component: Int) -> String
 }
 
-class AddReleaseViewModel {
+class EditReleaseViewModel {
     
-    var alertController:Alert?
     var category:[String] = []
-    var addReleaseCoordinator: AddReleaseCoordinator?
-    var mainListCoordinator: MainListCoordinator?
+    var editReleaseCoordinator: EditReleaseCoordinator?
     var detailView: DetailView = DetailView()
 }
 
-extension AddReleaseViewModel: AddReleaseViewModelProtocol {
+extension EditReleaseViewModel: EditReleaseViewModelProtocol {
     
     func actionSegmentedControl(sender: UISegmentedControl) {
         
@@ -43,16 +41,16 @@ extension AddReleaseViewModel: AddReleaseViewModelProtocol {
     }
     
     func actionCancelButton() {
-        addReleaseCoordinator?.cancel()
+        editReleaseCoordinator?.cancel()
         print("Cancelar Novo Lançamento")
-        self.alertController?.getAlert(titulo: "ATENÇÃO!!", mensagem: "Deseja realmente cancelar este novo lançamento?", button: "Confirmar", completion: nil)
     }
     
-    func actionSelectButton(view: DetailView) {
+    func actionSelectButton(view: EditReleaseDetailView) {
         view.endEditing(true)
+//        detailView.validTextField()
     }
     
-    func actionCancelButtonToolbar(view: DetailView) {
+    func actionCancelButtonToolbar(view: EditReleaseDetailView) {
 //        detailView.textFieldDate.text = ""
 //        detailView.textFieldCategory.text = ""
         view.endEditing(true)

@@ -2,7 +2,7 @@
 //  EditCategoryCoordinator.swift
 //  Financas
 //
-//  Created by Valeria Moreira pereira rodrigues on 31/03/22.
+//  Created by Josué Herrera Rodriguês on 31/03/22.
 //
 
 import UIKit
