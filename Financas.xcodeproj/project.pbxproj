@@ -16,7 +16,6 @@
 		A80D750B27E907AA006600B7 /* OutputDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80D750A27E907AA006600B7 /* OutputDetailView.swift */; };
 		A80D750E27E908D1006600B7 /* ReleasesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80D750D27E908D1006600B7 /* ReleasesTableViewCell.swift */; };
 		A80D751127E913B6006600B7 /* ReleasesDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80D751027E913B6006600B7 /* ReleasesDetail.swift */; };
-		A80D753427EA2AAD006600B7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80D753327EA2AAD006600B7 /* TabBarViewController.swift */; };
 		A83DCE3E27EDD5980045D575 /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83DCE3D27EDD5980045D575 /* MainTabBarCoordinator.swift */; };
 		A83DCE4027EDDC050045D575 /* MainListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83DCE3F27EDDC050045D575 /* MainListCoordinator.swift */; };
 		A83DCE4427EDF1340045D575 /* CategoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83DCE4327EDF1340045D575 /* CategoryCoordinator.swift */; };
@@ -32,7 +31,6 @@
 		A867812C27F3C9A9000C5817 /* EditCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A867812B27F3C9A9000C5817 /* EditCategoryViewController.swift */; };
 		A867812E27F3C9BC000C5817 /* EditCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A867812D27F3C9BC000C5817 /* EditCategoryViewModel.swift */; };
 		A867813127F3D3B3000C5817 /* CustomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A867813027F3D3B3000C5817 /* CustomColor.swift */; };
-		A867813327F3E17F000C5817 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A867813227F3E17F000C5817 /* TestViewController.swift */; };
 		A867813527F617CC000C5817 /* EditCategoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A867813427F617CC000C5817 /* EditCategoryCoordinator.swift */; };
 		A8B0265127F378D800A1A738 /* AddCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B0265027F378D800A1A738 /* AddCategoryViewModel.swift */; };
 		A8B0265327F378ED00A1A738 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B0265227F378ED00A1A738 /* AddCategoryViewController.swift */; };
@@ -44,6 +42,7 @@
 		A8B1CF8027ED28C8006CE59A /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B1CF7F27ED28C8006CE59A /* CategoryViewModel.swift */; };
 		A8B1CF8227ED28D6006CE59A /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B1CF8127ED28D6006CE59A /* CategoryViewController.swift */; };
 		A8DE02DB27F68E950064DA8F /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DE02DA27F68E950064DA8F /* Alert.swift */; };
+		A8DE02DE27F771EE0064DA8F /* TitlesConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DE02DD27F771EE0064DA8F /* TitlesConstants.swift */; };
 		A8E20BD427F66D1300393800 /* EditReleaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E20BD327F66D1300393800 /* EditReleaseCoordinator.swift */; };
 		A8E20BD627F66D6000393800 /* EditReleaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E20BD527F66D6000393800 /* EditReleaseViewModel.swift */; };
 		A8E20BD827F66EB900393800 /* EditReleaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E20BD727F66EB900393800 /* EditReleaseViewController.swift */; };
@@ -66,7 +65,6 @@
 		A80D750A27E907AA006600B7 /* OutputDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputDetailView.swift; sourceTree = "<group>"; };
 		A80D750D27E908D1006600B7 /* ReleasesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleasesTableViewCell.swift; sourceTree = "<group>"; };
 		A80D751027E913B6006600B7 /* ReleasesDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleasesDetail.swift; sourceTree = "<group>"; };
-		A80D753327EA2AAD006600B7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		A83DCE3D27EDD5980045D575 /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
 		A83DCE3F27EDDC050045D575 /* MainListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListCoordinator.swift; sourceTree = "<group>"; };
 		A83DCE4327EDF1340045D575 /* CategoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCoordinator.swift; sourceTree = "<group>"; };
@@ -82,7 +80,6 @@
 		A867812B27F3C9A9000C5817 /* EditCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryViewController.swift; sourceTree = "<group>"; };
 		A867812D27F3C9BC000C5817 /* EditCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryViewModel.swift; sourceTree = "<group>"; };
 		A867813027F3D3B3000C5817 /* CustomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColor.swift; sourceTree = "<group>"; };
-		A867813227F3E17F000C5817 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		A867813427F617CC000C5817 /* EditCategoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryCoordinator.swift; sourceTree = "<group>"; };
 		A8B0265027F378D800A1A738 /* AddCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewModel.swift; sourceTree = "<group>"; };
 		A8B0265227F378ED00A1A738 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +91,7 @@
 		A8B1CF7F27ED28C8006CE59A /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		A8B1CF8127ED28D6006CE59A /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		A8DE02DA27F68E950064DA8F /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		A8DE02DD27F771EE0064DA8F /* TitlesConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesConstants.swift; sourceTree = "<group>"; };
 		A8E20BD327F66D1300393800 /* EditReleaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReleaseCoordinator.swift; sourceTree = "<group>"; };
 		A8E20BD527F66D6000393800 /* EditReleaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReleaseViewModel.swift; sourceTree = "<group>"; };
 		A8E20BD727F66EB900393800 /* EditReleaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditReleaseViewController.swift; sourceTree = "<group>"; };
@@ -134,7 +132,7 @@
 		A80D74DD27E903C8006600B7 = {
 			isa = PBXGroup;
 			children = (
-				A83DCE4127EDF0A20045D575 /* Old */,
+				A8DE02DC27F771C50064DA8F /* Constants */,
 				A80D74E827E903C8006600B7 /* Financas */,
 				A80D74E727E903C8006600B7 /* Products */,
 				1667D7B4B3D0D207A8755426 /* Pods */,
@@ -153,7 +151,6 @@
 		A80D74E827E903C8006600B7 /* Financas */ = {
 			isa = PBXGroup;
 			children = (
-				A867813227F3E17F000C5817 /* TestViewController.swift */,
 				A867812F27F3D39E000C5817 /* Utils */,
 				A8B1CF7327ECE0FA006CE59A /* Coordinator */,
 				A8B1CF7427ECE42B006CE59A /* MainList */,
@@ -195,14 +192,6 @@
 				A80D751027E913B6006600B7 /* ReleasesDetail.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		A83DCE4127EDF0A20045D575 /* Old */ = {
-			isa = PBXGroup;
-			children = (
-				A85FF9D627EA31D20038E638 /* TabBar */,
-			);
-			path = Old;
 			sourceTree = "<group>";
 		};
 		A83DCE4527EE08860045D575 /* AddReleases */ = {
@@ -272,14 +261,6 @@
 				A83DCE5127EE200A0045D575 /* AddReleaseViewModel.swift */,
 			);
 			name = ViewModel;
-			sourceTree = "<group>";
-		};
-		A85FF9D627EA31D20038E638 /* TabBar */ = {
-			isa = PBXGroup;
-			children = (
-				A80D753327EA2AAD006600B7 /* TabBarViewController.swift */,
-			);
-			path = TabBar;
 			sourceTree = "<group>";
 		};
 		A85FF9D727EA320B0038E638 /* Model */ = {
@@ -455,6 +436,14 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		A8DE02DC27F771C50064DA8F /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				A8DE02DD27F771EE0064DA8F /* TitlesConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -575,6 +564,7 @@
 				A85FF9DD27EA33180038E638 /* CategoryTableViewCell.swift in Sources */,
 				A80D750927E90770006600B7 /* EntryDetailView.swift in Sources */,
 				A867812E27F3C9BC000C5817 /* EditCategoryViewModel.swift in Sources */,
+				A8DE02DE27F771EE0064DA8F /* TitlesConstants.swift in Sources */,
 				A80D74F427E903C8006600B7 /* Financas.xcdatamodeld in Sources */,
 				A83DCE4427EDF1340045D575 /* CategoryCoordinator.swift in Sources */,
 				A80D74EA27E903C8006600B7 /* AppDelegate.swift in Sources */,
@@ -586,7 +576,6 @@
 				A8E20BDA27F66F8000393800 /* EditReleaseDetailView.swift in Sources */,
 				A867813127F3D3B3000C5817 /* CustomColor.swift in Sources */,
 				A8E20BD827F66EB900393800 /* EditReleaseViewController.swift in Sources */,
-				A867813327F3E17F000C5817 /* TestViewController.swift in Sources */,
 				A867812A27F3C994000C5817 /* EditCategoryDetailView.swift in Sources */,
 				A8E20BD627F66D6000393800 /* EditReleaseViewModel.swift in Sources */,
 				A8B0265727F3793400A1A738 /* AddCategoryCoordinator.swift in Sources */,
@@ -603,7 +592,6 @@
 				A80D751127E913B6006600B7 /* ReleasesDetail.swift in Sources */,
 				A83DCE4027EDDC050045D575 /* MainListCoordinator.swift in Sources */,
 				A85FF9E127EBA4E50038E638 /* SegmentedControlView.swift in Sources */,
-				A80D753427EA2AAD006600B7 /* TabBarViewController.swift in Sources */,
 				A85FF9DF27EA33430038E638 /* CategoryDetail.swift in Sources */,
 				A83DCE5027EE16E20045D575 /* AddReleasesViewController.swift in Sources */,
 				A8B1CF7627ECE440006CE59A /* MainListViewModel.swift in Sources */,

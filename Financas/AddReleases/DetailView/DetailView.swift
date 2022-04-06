@@ -97,17 +97,6 @@ class DetailView: UIView {
         return label
     }()
     
-//    lazy var imageViewValue:UIImageView = {
-//
-//        let image = UIImageView()
-//        image.image = UIImage(named: "VectorCima")
-//        image.tintColor = .black
-//        image.contentMode = .scaleAspectFit
-//        image.backgroundColor = .white
-//
-//        return image
-//    }()
-    
     lazy var textFieldValue: UITextField = {
         
         let textField = UITextField()
@@ -267,7 +256,6 @@ class DetailView: UIView {
         self.settingLabelReleasesTypeConstraint()
         self.settingSegmentedControlConstraint()
         self.settingLabelValueConstraint()
-//        self.settingImageViewValueConstraint()
         self.settingTextFieldValueConstraint()
         self.settingLabelCategoryConstraint()
         self.settingTextFieldCategoryConstraint()
@@ -379,7 +367,6 @@ class DetailView: UIView {
         self.addSubview(self.labelReleasesType)
         self.addSubview(self.segmentedControl)
         self.addSubview(self.labelValue)
-//        self.addSubview(self.imageViewValue)
         self.addSubview(self.textFieldValue)
         self.addSubview(self.labelCategory)
         self.addSubview(self.textFieldCategory)
@@ -437,14 +424,6 @@ class DetailView: UIView {
             make.left.equalTo(self.labelSpend.snp.left)
         }
     }
-    
-//    func settingImageViewValueConstraint() {
-//        self.imageViewValue.snp.makeConstraints { make in
-//            make.centerY.equalTo(self.textFieldValue.snp.centerY)
-//            make.left.equalToSuperview().offset(23)
-//            make.height.width.equalTo(25)
-//        }
-//    }
     
     func settingTextFieldValueConstraint() {
         self.textFieldValue.snp.makeConstraints { make in

@@ -97,17 +97,6 @@ class EditReleaseDetailView: UIView {
         return label
     }()
     
-//    lazy var imageViewValue:UIImageView = {
-//
-//        let image = UIImageView()
-//        image.image = UIImage(named: "VectorCima")
-//        image.tintColor = .black
-//        image.contentMode = .scaleAspectFit
-//        image.backgroundColor = .white
-//
-//        return image
-//    }()
-    
     lazy var textFieldValue: UITextField = {
         
         let textField = UITextField()

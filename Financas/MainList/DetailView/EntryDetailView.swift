@@ -34,7 +34,7 @@ class EntryDetailView: UIView {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont.systemFont(ofSize: 14)
-        label.text = "Entradas estes mês"
+        label.text = Constant.MeusGastos.labelSubTitle.rawValue
 
         return label
     }()
